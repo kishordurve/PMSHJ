@@ -1,0 +1,1267 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+#include "verrsrc.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "#include ""verrsrc.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#include ""res\\PMSHJ.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""      // Standard components\r\n"
+    "#include ""afxprint.rc""    // printing/print preview resources\r\n"
+    "#include ""afxdb.rc""        // Database resources\r\n"
+    "#if !defined(_AFXDLL)\r\n"
+    "#include ""afxribbon.rc""        // MFC ribbon and control bar resources\r\n"
+    "#endif\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\PMSHJ.ico"
+
+IDR_PMSHJTYPE           ICON                    "res\\PMSHJDoc.ico"
+
+IDI_PRINT               ICON                    "res\\icon1.ico"
+
+IDI_WT_ZERO             ICON                    "res\\ico00001.ico"
+
+IDI_SETTINGS            ICON                    "res\\ico00002.ico"
+
+IDI_DATA                ICON                    "res\\ico00003.ico"
+
+IDI_REPORT              ICON                    "res\\ico00004.ico"
+
+IDI_EXIT                ICON                    "res\\ico00005.ico"
+
+IDI_DATA_OUTPUT         ICON                    "res\\icon2.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+IDR_MAINFRAME_256       BITMAP                  "res\\Toolbar256.bmp"
+
+IDB_BITMAP_LENGTH       BITMAP                  "res\\bitmap1.bmp"
+
+IDB_BITMAP_WIDTH        BITMAP                  "res\\bmp00001.bmp"
+
+IDB_BITMAP_HEIGHT       BITMAP                  "res\\bmp00002.bmp"
+
+IDB_BITMAP_VOLUME       BITMAP                  "res\\bmp00003.bmp"
+
+IDB_BITMAP_WEIGHT_TITLE BITMAP                  "res\\bmp00004.bmp"
+
+IDB_BITMAP_VERT_SEP_FULL BITMAP                  "res\\bmp00005.bmp"
+
+IDB_BITMAP_HORZ_800     BITMAP                  "res\\bmp00006.bmp"
+
+IDB_BITMAP_VERT_SEP_HALF BITMAP                  "res\\bmp00007.bmp"
+
+IDB_BITMAP_VERT_SEP_266 BITMAP                  "res\\bmp00008.bmp"
+
+IDB_BITMAP_WT_OK        BITMAP                  "res\\bmp00009.bmp"
+
+IDB_BITMAP_WT_NOK       BITMAP                  "res\\bmp00010.bmp"
+
+IDB_BITMAP_MEAS_OK      BITMAP                  "res\\bmp00011.bmp"
+
+IDB_BITMAP_HORZ_666     BITMAP                  "res\\bmp00012.bmp"
+
+IDB_BITMAP_MEAS_NOK     BITMAP                  "res\\bmp00013.bmp"
+
+IDB_BITMAP_LT_LOGO      BITMAP                  "res\\bmp00014.bmp"
+
+IDB_BITMAP_HORZ_172     BITMAP                  "res\\bmp00015.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_RECORD_FIRST
+    BUTTON      ID_RECORD_PREV
+    BUTTON      ID_RECORD_NEXT
+    BUTTON      ID_RECORD_LAST
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+IDR_MAINFRAME_256 TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_RECORD_FIRST
+    BUTTON      ID_RECORD_PREV
+    BUTTON      ID_RECORD_NEXT
+    BUTTON      ID_RECORD_LAST
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view",              ID_FILE_PRINT_PREVIEW
+        MENUITEM "P&rint Setup...",             ID_FILE_PRINT_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+    POPUP "&Record"
+    BEGIN
+        MENUITEM "&First Record",               ID_RECORD_FIRST
+        MENUITEM "&Previous Record",            ID_RECORD_PREV
+        MENUITEM "&Next Record",                ID_RECORD_NEXT
+        MENUITEM "&Last Record",                ID_RECORD_LAST
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About PMSHJ...",             ID_APP_ABOUT
+    END
+END
+
+IDR_POPUP_EDIT MENU
+BEGIN
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+    END
+END
+
+IDR_HELP_MENU MENU
+BEGIN
+    MENUITEM "&About PMSHJ...",             ID_APP_ABOUT
+END
+
+IDR_THEME_MENU MENU
+BEGIN
+    MENUITEM "Office 2007 (&Blue Style)",   ID_VIEW_APPLOOK_OFF_2007_BLUE
+    MENUITEM "Office 2007 (B&lack Style)",  ID_VIEW_APPLOOK_OFF_2007_BLACK
+    MENUITEM "Office 2007 (&Silver Style)", ID_VIEW_APPLOOK_OFF_2007_SILVER
+    MENUITEM "Office 2007 (&Aqua Style)",   ID_VIEW_APPLOOK_OFF_2007_AQUA
+    MENUITEM "Win&dows 7",                  ID_VIEW_APPLOOK_WINDOWS_7
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About PMSHJ"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+    LTEXT           "PMSHJ, Version 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2019",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_PMSHJ_FORM DIALOGEX 0, 0, 907, 469
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         IDB_BITMAP_LENGTH,IDC_PIC_LENGTH,"Static",SS_BITMAP,574,131,53,44,WS_EX_TRANSPARENT
+    LTEXT           "Static",IDC_STATIC_TEXT_LEN,626,131,74,44
+    CONTROL         IDB_BITMAP_WIDTH,IDC_PIC_WIDTH,"Static",SS_BITMAP,574,198,53,44
+    CONTROL         IDB_BITMAP_HEIGHT,IDC_PIC_HEIGHT,"Static",SS_BITMAP,574,265,53,44
+    CONTROL         IDB_BITMAP_VOLUME,IDC_PIC_VOLUME,"Static",SS_BITMAP,731,131,53,44
+    CONTROL         IDABORT,IDC_PIC_WEIGHT,"Static",SS_BITMAP,731,198,53,44
+    PUSHBUTTON      "Settings",IDC_BN_SETTINGS,11,148,141,32
+    PUSHBUTTON      "Report",IDC_BN_REPORT,11,92,141,32
+    PUSHBUTTON      "Exit",IDC_BN_EXIT,11,316,141,32
+    CONTROL         IDB_BITMAP_LOGO_HJ,IDC_PIC_LOGO,"Static",SS_BITMAP,35,28,88,41
+    PUSHBUTTON      "Start",IDC_BN_SCAN,11,204,141,32
+    EDITTEXT        IDC_EDIT_STA_NAME,0,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_data_stamp,5,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_wk_date,17,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_tran_no,11,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_pack_no,25,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_pack_l,32,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_pack_w,39,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_pack_h,48,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_pack_v,53,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_v_unit,70,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_pack_net,59,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_pack_gross,64,456,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_pack_tare,77,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_pack_ptare,84,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_wt_unit,89,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_upd_flag,95,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_del_mark,101,457,6,12,ES_AUTOHSCROLL | NOT WS_BORDER
+    PUSHBUTTON      "Stop",IDC_BN_STOP,11,260,141,32
+    CONTROL         "",IDC_MSFLEXGRID,"{6262D3A0-531B-11CF-91F6-C2863C385E30}",WS_TABSTOP,195,337,684,131
+    CONTROL         IDB_BITMAP_TOP_BANNER,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,164,0,744,49
+    LTEXT           "Static",IDC_STATIC_TEXT_WIDTH,626,198,74,44
+    LTEXT           "Static",IDC_STATIC_TEXT_HT,626,265,74,44
+    LTEXT           "Static",IDC_STATIC_TEXT_VOL,784,131,78,44
+    LTEXT           "Static",IDC_STATIC_TEXT_WT,784,198,78,44
+    CONTROL         IDB_BITMAP_CENTRAL_BANNER,IDC_STATIC,"Static",SS_BITMAP,195,58,355,33
+    CONTROL         IDB_BITMAP_RH_BANNER,IDC_STATIC_RH_BANNER,"Static",SS_BITMAP,570,78,307,32
+    CONTROL         IDB_BITMAP_MM,IDC_STATIC,"Static",SS_BITMAP,700,131,32,44
+    CONTROL         IDB_BITMAP_MM,IDC_STATIC,"Static",SS_BITMAP,700,198,32,44
+    CONTROL         IDB_BITMAP_MM,IDC_STATIC,"Static",SS_BITMAP,700,265,32,44
+    CONTROL         IDB_BITMAP_M3,IDC_STATIC,"Static",SS_BITMAP,862,131,32,44
+    CONTROL         IDB_BITMAP_KG,IDC_STATIC,"Static",SS_BITMAP,862,198,32,44
+    PUSHBUTTON      "",IDC_PRINT,7,0,25,23,NOT WS_VISIBLE
+    PUSHBUTTON      "",IDC_BN_AIR_FREIGHT,15,403,131,30
+    PUSHBUTTON      "",IDC_BN_SEA_FREIGHT,15,360,131,30
+    CONTROL         IDB_BITMAP_DATA_LOGGING,IDC_PIC_DATA,"Static",SS_BITMAP,735,269,32,30
+    CONTROL         IDB_BITMAPDATA_NOT_DONE,IDC_PIC_DATA_LIGHT,"Static",SS_BITMAP,803,273,32,30
+END
+
+IDD_DLG_SERIAL_COMM DIALOGEX 0, 0, 371, 297
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Serial Parameters"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "FCNA",IDC_RADIO_WEIGH_SCALE_TYPR,"Button",BS_AUTORADIOBUTTON | WS_GROUP,31,241,36,10
+    CONTROL         "EXCELL",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,72,241,39,10
+    CONTROL         "CH340",IDC_RADIO_WEIGH_SCALE_CH340,"Button",BS_AUTORADIOBUTTON,112,242,36,10
+    CONTROL         "P5",IDC_RADIO_P5,"Button",BS_AUTORADIOBUTTON,153,242,19,10
+    CONTROL         "GRAM",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,179,242,33,10
+    CONTROL         "Input to Weigh Scale",IDC_RADIO_WEIGH_CALE_INPUT,"Button",BS_AUTORADIOBUTTON | WS_GROUP,22,139,78,10
+    CONTROL         "Output from Weigh Scale",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,108,139,90,10
+    CONTROL         "Printer",IDC_RADIO_PRINTER,"Button",BS_AUTORADIOBUTTON,205,139,32,10
+    CONTROL         "Code Scanner",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,243,139,56,10
+    CONTROL         "Foot switch",IDC_RADIO7,"Button",BS_AUTORADIOBUTTON,304,139,50,10
+    COMBOBOX        IDC_CMB_BAUD_RATE,88,179,51,59,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CMB_BYTE_SIZE,88,198,51,59,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CMB_PARITY,213,179,51,59,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CMB_STOP_BIT,213,198,51,59,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Set Params",IDC_BN_SET_COM_PARAMS,297,177,60,21
+    DEFPUSHBUTTON   "OK",IDOK,119,268,50,21
+    PUSHBUTTON      "Cancel",IDCANCEL,210,268,50,21
+    LISTBOX         IDC_LIST_COM_PORTS,18,32,339,86,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Continuous",IDC_RADIO_DATA_TRANS_TYPE,"Button",BS_AUTORADIOBUTTON | WS_GROUP,234,242,52,10
+    CONTROL         "Stable",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON,301,242,36,10
+    LTEXT           "Baud Rate",IDC_STATIC,49,180,34,8
+    LTEXT           "Select COM Port for Weigh Scale and Printer",IDC_STATIC,109,17,145,10
+    GROUPBOX        "Weigh Scale Type",IDC_STATIC,27,227,188,35
+    GROUPBOX        "Data Transmision Type",IDC_STATIC,221,227,123,35
+    LTEXT           "Byte Size",IDC_STATIC,53,199,30,8
+    LTEXT           "Parity",IDC_STATIC,189,180,20,8
+    LTEXT           "Stop Bit",IDC_STATIC,183,199,26,8
+    GROUPBOX        "COM Port Parameters",IDC_STATIC,18,161,259,59
+    GROUPBOX        "Select Port",IDC_STATIC,18,123,339,36
+END
+
+IDD_DLG_SETTINGS DIALOGEX 0, 0, 359, 273
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Settings"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,154,243,50,23
+    LTEXT           "Machine Name ",IDC_STATIC,72,14,50,8
+    EDITTEXT        IDC_EDIT_MACHINE_NAME,129,11,169,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Weight Settings",IDC_BN_WT_SETTINGS,61,42,104,23
+    PUSHBUTTON      "COM Port Settings",IDC_BN_COMPORT_SETTINGS,194,42,104,23
+    PUSHBUTTON      "Read UDF File",IDC_BN_READ_UDF_FILE,0,0,39,21,NOT WS_VISIBLE
+    PUSHBUTTON      "Save UDF File",IDC_BN_SAVE_UDF_FILE,0,83,39,21,NOT WS_VISIBLE
+    PUSHBUTTON      "Insp Params",IDC_BN_INSP_PARAMS,61,114,104,23
+    PUSHBUTTON      "Scanner Test",IDC_BN_CODE_TEST,194,150,104,23
+    EDITTEXT        IDC_EDIT_CODE_TEST,194,184,104,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Options",IDC_BN_OPTIONS,61,150,104,23
+    PUSHBUTTON      "Print Params",IDC_BN_PRINT_PARAMS,193,78,104,23
+    PUSHBUTTON      "Calibration",IDC_BN_CALIBRATION,63,186,104,23
+    PUSHBUTTON      "Freight Params",IDC_BN_FREIGHT_PARAMS,193,114,104,23
+    PUSHBUTTON      "Data Send Params",IDC_BN_DATA_SEND_PARAMS,61,78,104,23
+END
+
+IDD_DLG_WT_SETTINGS DIALOGEX 0, 0, 275, 200
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Weight Settings"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,74,159,50,22
+    PUSHBUTTON      "Cancel",IDCANCEL,158,159,50,22
+    PUSHBUTTON      "Set Tare Wt",IDC_BN_SET_TARE,154,39,94,22
+    EDITTEXT        IDC_EDIT_PRETARE_WT,63,96,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Set PreTare Wt",IDC_BN_SET_PRETARE,110,92,94,22
+    PUSHBUTTON      "Set Zero Wt",IDC_BN_SET_ZERO_WT,27,39,94,22
+    LTEXT           "Weight Accuracy (places after decimal)",IDC_STATIC,50,129,126,8
+    EDITTEXT        IDC_EDIT_WT_ACC,179,127,15,14,ES_AUTOHSCROLL | ES_NUMBER
+END
+
+IDD_DLG_UDF_FILE DIALOGEX 0, 0, 216, 186
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Edit and Save UDF File"
+FONT 10, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "Save",IDOK,44,159,50,21
+    PUSHBUTTON      "Cancel",IDCANCEL,119,159,50,21
+    CONTROL         "",IDC_RICHEDIT2_TXT,"RichEdit20W",WS_BORDER | WS_TABSTOP | 0x84,25,26,164,127
+    LTEXT           "Use CTRL + ENTER to go to next line",IDC_STATIC,45,10,131,11
+END
+
+IDD_DLG_REPORT DIALOGEX 0, 0, 811, 325
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Report"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Show Records",IDC_BN_SHOW_RECORDS,18,12,75,14
+    CONTROL         "",IDC_LIST_DATABASE,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,1,58,808,225
+    CONTROL         "Enter Manually",IDC_RADIO_TRAN_NUM,"Button",BS_AUTORADIOBUTTON | WS_GROUP,375,18,60,10
+    CONTROL         "Scan Barcode",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,375,33,59,10
+    PUSHBUTTON      "Scan Barcode",IDC_BN_SCAN_BARCODE,214,24,75,14
+    PUSHBUTTON      "Fetch Records",IDC_BN_FETCH_RECORDS,546,24,75,14
+    PUSHBUTTON      "Export",IDC_BN_EXPORT_TO_XLS,710,24,75,14
+    PUSHBUTTON      "Delete Record",IDC_BN_DELETE_RECORD,18,35,75,14
+    PUSHBUTTON      "Cancel",IDCANCEL,380,295,50,14
+    LTEXT           "Transpoter Number",IDC_STATIC,304,26,64,8
+    EDITTEXT        IDC_EDIT_TRANS_NO,439,24,83,14,ES_AUTOHSCROLL
+    GROUPBOX        "Select Records for a Transporter (??????)",IDC_STATIC,298,2,338,53
+    LTEXT           "Selected Pkg",IDC_STATIC_SEL_PKG,99,35,87,14,0,WS_EX_STATICEDGE
+END
+
+IDD_DLG_INSP_PARAMS DIALOGEX 0, 0, 309, 273
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Insp Parameters"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,75,242,50,23
+    PUSHBUTTON      "Cancel",IDCANCEL,183,242,50,23
+    LTEXT           "Camera Height from Platform",IDC_STATIC,60,16,94,8
+    LTEXT           "Min Job Height",IDC_STATIC,106,35,48,8
+    LTEXT           "Max Job Height",IDC_STATIC,104,54,50,8
+    LTEXT           "Spot Rect Size",IDC_STATIC,107,92,47,8
+    CONTROL         "Flip Image Vertical",IDC_CHK_FLIP_VERT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,113,218,74,10
+    CONTROL         "Flip Image Horizontal",IDC_CHK_FLIP_HORZ,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,200,218,83,10
+    LTEXT           "Min Job Weight",IDC_STATIC,104,73,50,8
+    EDITTEXT        IDC_EDIT_MIN_WT,164,71,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_MIN_JOB_HT,164,33,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_MAX_JOB_HT,164,52,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SPOT_RECT_SIZE,164,90,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CAM_HT,164,14,40,14,ES_AUTOHSCROLL
+    LTEXT           "Barcode Length (Min)",IDC_STATIC,85,112,69,8
+    EDITTEXT        IDC_EDIT_CODE_LEN,164,110,40,14,ES_AUTOHSCROLL
+    CONTROL         "Cuboid Box",IDC_CHK_ISCUBOID,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,35,217,52,10
+    GROUPBOX        "Display accuracy",IDC_STATIC,69,173,176,34
+    CONTROL         "1 mm",IDC_RADIO_DSPL_ACC,"Button",BS_AUTORADIOBUTTON | WS_GROUP,78,191,33,10
+    CONTROL         "2 mm",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,120,191,33,10
+    CONTROL         "5 mm",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,162,191,33,10
+    CONTROL         "10 mm",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON,204,191,37,10
+    LTEXT           "Camera ALign Rect Size",IDC_STATIC,78,152,76,8
+    EDITTEXT        IDC_EDIT_CAM_ALIGN_RECT_SIZE,164,150,40,14,ES_AUTOHSCROLL
+    LTEXT           "Barcode Length (Max)",IDC_STATIC,82,132,72,8
+    EDITTEXT        IDC_EDIT_CODE_LEN_MAX,164,130,40,14,ES_AUTOHSCROLL
+END
+
+IDD_DLG_OPTIONS DIALOGEX 0, 0, 329, 300
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Options"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Barcode",IDC_RADIO_TRG_SOURCE,"Button",BS_AUTORADIOBUTTON | WS_GROUP,57,189,42,10
+    CONTROL         "Foot Switch",IDC_RADIO_FOOT_SWITCH,"Button",BS_AUTORADIOBUTTON,137,189,53,10
+    CONTROL         "* (Asterisk)",IDC_RAD_CODE_SUFFIX,"Button",BS_AUTORADIOBUTTON | WS_GROUP,237,183,53,10
+    CONTROL         "CR (CR + LF)",IDC_RADIO9,"Button",BS_AUTORADIOBUTTON,237,206,59,10
+    DEFPUSHBUTTON   "OK",IDOK,69,267,50,23
+    PUSHBUTTON      "Cancel",IDCANCEL,210,267,50,23
+    CONTROL         "English",IDC_RADIO_LANGUAGE,"Button",BS_AUTORADIOBUTTON | WS_GROUP,24,38,38,10
+    CONTROL         "Chinese",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,24,69,41,10
+    CONTROL         "Japanese",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON | WS_DISABLED,24,101,47,10
+    CONTROL         "MM",IDC_RADIO_DIM_UNIT,"Button",BS_AUTORADIOBUTTON | WS_GROUP,109,38,27,10
+    CONTROL         "CM",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,109,69,26,10
+    CONTROL         "M",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON,109,101,21,10
+    CONTROL         "Inch",IDC_RADIO7,"Button",BS_AUTORADIOBUTTON,109,131,30,10
+    GROUPBOX        "Language",IDC_STATIC,16,17,60,135
+    GROUPBOX        "Dim Units",IDC_STATIC,89,17,60,135
+    CONTROL         "Korean",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON | WS_DISABLED,24,130,39,10
+    GROUPBOX        "Code Suffix Character",IDC_STATIC,223,164,90,66
+    GROUPBOX        "Weight Display",IDC_STATIC,162,17,79,135
+    CONTROL         "Net Weight",IDC_CHK_NET_WT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,173,38,49,10
+    CONTROL         "Gross Weight",IDC_CHK_GROSS_WT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,173,69,59,10
+    CONTROL         "Tare Weight",IDC_CHK_TARE_WT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,173,101,55,10
+    CONTROL         "Pre-Tare Weight",IDC_CHK_PRETARE_WT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,173,131,66,10
+    CONTROL         "Print Label",IDC_CHK_PRINT_LABEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,261,131,49,10
+    GROUPBOX        "Data Save Trigger Source",IDC_STATIC,16,164,189,66
+    PUSHBUTTON      "Foot Switch Test",IDC_BN_TEST_FOOT_SWITCH,131,207,66,14
+    GROUPBOX        "Code Scanner",IDC_STATIC,254,17,59,104
+    CONTROL         "HikVision",IDC_RADIO_SCANNER,"Button",BS_AUTORADIOBUTTON | WS_GROUP,261,38,43,10
+    CONTROL         "Serial",IDC_RADIO11,"Button",BS_AUTORADIOBUTTON,261,69,33,10
+    CONTROL         "KB Emulate",IDC_RADIO10,"Button",BS_AUTORADIOBUTTON,261,101,51,10
+    CONTROL         "Enable Weight Reading",IDC_CHK_ENABLE_WT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,119,241,90,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "LT"
+            VALUE "FileDescription", "PMSHJ"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "PMSHJ.exe"
+            VALUE "LegalCopyright", "(c) Long Tian.  All rights reserved."
+            VALUE "OriginalFilename", "PMSHJ.exe"
+            VALUE "ProductName", "PMSHJ"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_PMSHJ_FORM, DIALOG
+    BEGIN
+    END
+
+    IDD_DLG_SERIAL_COMM, DIALOG
+    BEGIN
+    END
+
+    IDD_DLG_SETTINGS, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 269
+    END
+
+    IDD_DLG_WT_SETTINGS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 268
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 193
+    END
+
+    IDD_DLG_UDF_FILE, DIALOG
+    BEGIN
+        RIGHTMARGIN, 212
+        BOTTOMMARGIN, 185
+    END
+
+    IDD_DLG_REPORT, DIALOG
+    BEGIN
+        LEFTMARGIN, 1
+        RIGHTMARGIN, 809
+    END
+
+    IDD_DLG_INSP_PARAMS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+    END
+
+    IDD_DLG_OPTIONS, DIALOG
+    BEGIN
+        RIGHTMARGIN, 326
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_PMSHJ_FORM AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_SERIAL_COMM AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_SETTINGS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_WT_SETTINGS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_UDF_FILE AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_REPORT AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_INSP_PARAMS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_OPTIONS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_PMSHJ_FORM DLGINIT
+BEGIN
+    IDC_MSFLEXGRID, 0x37a, 322, 0
+0x0024, 0x0000, 0x0037, 0x0032, 0x0045, 0x0036, 0x0037, 0x0031, 0x0032, 
+0x0030, 0x002d, 0x0035, 0x0039, 0x0035, 0x0039, 0x002d, 0x0031, 0x0031, 
+0x0063, 0x0066, 0x002d, 0x0039, 0x0031, 0x0046, 0x0036, 0x002d, 0x0043, 
+0x0032, 0x0038, 0x0036, 0x0033, 0x0043, 0x0033, 0x0038, 0x0035, 0x0045, 
+0x0033, 0x0030, 0x0029, 0x0000, 0x0001, 0x0000, 0x0021, 0x0000, 0x004c, 
+0x0000, 0x0000, 0x0001, 0x8001, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0002, 0x8001, 0x0001, 0x0000, 0x2100, 0x3443, 0x0812, 0x0000, 0x0a00, 
+0x006a, 0x0400, 0x0016, 0x4200, 0x6f6f, 0x0050, 0x0600, 0x8000, 0x0000, 
+0x0200, 0x0000, 0x0500, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0200, 0x0000, 0xff80, 0xf0ff, 0x0f00, 0x0000, 0x0f80, 0x0000, 
+0x0d80, 0x0000, 0x0e80, 0x0000, 0x8080, 0x8080, 0xc000, 0xc0c0, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0100, 0x0000, 0x0100, 0x0000, 0x0000, 0x0000, 
+0x0100, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0100, 0x0100, 0x0000, 
+0x0100, 0x0200, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0100, 0x0400, 0x0000, 0x0000, 0x0000, 0x0300, 0xe352, 0x910b, 
+0xce8f, 0x9d11, 0x00e3, 0x00aa, 0xb84b, 0x0151, 0x0000, 0x9000, 0x4401, 
+0x0142, 0x0600, 0x6154, 0x6f68, 0x616d, 0x5204, 0x0be3, 0x8f91, 0x11ce, 
+0xe39d, 0xaa00, 0x4b00, 0x51b8, 0x746c, 0x0000, 0x0000, 0x0000, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+    IDS_STR_SETTINGS        "Settings"
+    IDS_STR_REPORT          "Report"
+    IDP_FAILED_OPEN_DATABASE "Cannot open database."
+    IDS_STR_PRINT           "Print"
+    IDS_STR_SCAN            "Scan"
+    IDS_STR_STOP            "Stop"
+    IDS_STR_LENGTH          "Length"
+    IDS_STR_WIDTH           "Width"
+    IDS_STR_HEIGHT          "Height"
+    IDS_STR_VOLUME          "Volume"
+    IDS_STR_NET_WT          "Net Wt"
+END
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "PMSHJ\n\nPMSHJ\nPMSHJ Files (*.udf)\n.udf\nPMSHJ.Document\nPMSHJ.Document"
+    IDS_STR_OK              "OK"
+    IDS_STR_CANCEL          "Cancel"
+    IDS_STR_ZERO_WT         "Set Zero Weight"
+    IDS_STR_SET_TARE_WT     "Set Tare Weight"
+    IDS_STR_SET_PTARE_WT    "Set Pre Tare Weight"
+    IDS_STR_SL_PORT_PARAMS  "Serial Port Parameters"
+    IDS_STR_SEL_COM_PORT    "Select COM Port for Weigh Scale, Printer and Scanner"
+    IDS_STR_SEL_PORT        "Select Port"
+    IDS_STR_WS_INPUT        "Weight Scale Input"
+    IDS_STR_WS_OUTPUT       "Weigh Scale Output"
+    IDS_STR_PRINTER         "Printer"
+    IDS_STR_SET_PARAMS      "Set Params"
+    IDS_STR_COM_PARAMS      "COM Port Parameters"
+    IDS_STR_BAUD_RATE       "Baud Rate"
+    IDS_STR_BYTE_SIZE       "Byte Size"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "PMSHJ"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_DIRECT    "Print the active document using current options\nQuick Print"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE
+BEGIN
+    ID_RECORD_FIRST         "Move to first record\nFirst Record"
+    ID_RECORD_LAST          "Move to final record\nLast Record"
+    ID_RECORD_NEXT          "Move to next record\nNext Record"
+    ID_RECORD_PREV          "Move to previous record\nPrevious Record"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STR_GROSS_WT        "Gross Weight"
+    IDS_STR_TARE_WT         "Tare Weight"
+    IDS_STR_PRETARE_WT      "Pre Tare Weight"
+    IDS_STR_SCAN_DATA_DSPL  "Scan Data Displayed"
+    IDS_STR_WF_CODE         "W/F Barcode"
+    IDS_STR_PKG_NUM         "Pkg No."
+    IDS_STR_WT_SETTINGS     "Weight Settings"
+    IDS_STR_COM_PORT_ST     "COM Port Settings"
+    IDS_STR_READ_UDF        "Read UDF File"
+    IDS_STR_SAVE_UDF        "Save UDF File"
+    IDS_STATUS_PANE1        "Pane 1"
+    IDS_STATUS_PANE2        "Pane 2"
+    IDS_TOOLBAR_STANDARD    "Standard"
+    IDS_TOOLBAR_CUSTOMIZE   "Customize..."
+    IDS_STR_INSP_PARAMS     "Inspection Params"
+    IDS_STR_CODE_TEST       "Barcode Test"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_EDIT_MENU           "Edit"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STR_PARITY          "Parity"
+    IDS_STR_STOP_BIT        "Stop Bit"
+    IDS_STR_WT_SCALE_TYPE   "Weigh Scale Type"
+    IDS_STR_DATA_TRANS_TYPE "Data Transmission Type"
+    IDS_STR_CONT            "Continuous"
+    IDS_STR_STABLE          "Stable"
+    IDS_STR_EDIT_SAVE_UDF   "Edit and Save UDF File"
+    IDS_STR_NEXT_LINE       "Use CTRL+ENTER to go to next line"
+    IDS_STR_CAM_HT          "Camera height from platform"
+    IDS_STR_MIN_JOB_HT      "Min job height"
+    IDS_STR_MAX_JOB_HT      "Max job height"
+    IDS_STR_MIN_JOB_WT      "Min job weight"
+    IDS_STR_SPOT_RECT_SIZE  "Spot rect size"
+    IDS_STR_CODE_LEN        "Barcode length"
+    IDS_STR_CUBE            "Cuboid box"
+    IDS_STR_FLIP_VERT       "Flip image vertical"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STR_FLIP_HORZ       "Flip image horizontal"
+    IDS_STR_SHOW_RECS       "Show Records"
+    IDS_STR_DEL_REC         "Delete Record"
+    IDS_STR_SCAN_RECS       "Scan Records for Transporter"
+    IDS_STR_TRANS_NUM       "Transporter Number"
+    IDS_STR_ENTER_MAN       "Enter Manually"
+    IDS_STR_SCAN_CODE       "Scan Barcode"
+    IDS_STR_FETCH_RECS      "Fetch Records"
+    IDS_STR_EXPORT          "Export"
+    IDS_STR_DONE            "Done"
+    IDS_STR_SCAN_STOPPED    "Scan Stopped"
+    IDS_STR_3DCAM_NOT_INIT  "3D Camera Not Initialized!"
+    IDS_STR_SCAN_UP         "Scanning under progress. W/F Barcode scan"
+    IDS_STR_WT_NOT_READ     "Weight cannot be read"
+    IDS_STR_STOP_SCAN       "Stop Scan "
+    IDS_STR_GRAB_ERR        "Error in image grabbing"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STR_SCANDATA_INVALID "Scan Data Invalid"
+    IDS_STR_SCADATA_DSPLD   "Scan Data Displayed. W/F Barcode."
+    IDS_STR_CODE_RCD        "Barcode Recieved"
+    IDS_STR_DATA_SAVED      "Data Saved Successfully!"
+    IDS_STR_DATA_NOT_SAVED  "Data Could Not be Saved!"
+    IDS_STR_SCAN_OVER       "Scanning Over"
+    IDS_STR_APP_RUNNING     "Application is already running. Cannot start again!"
+    IDS_STR_LIC_EXPIRED     "License Expired!"
+    IDS_STR_DONGLE_MISSING  "Dongle Not Found or Incorrect PWD! Application can't run."
+    IDS_STR_WRONG_CAM_SL    "Incorrect Camera! Cannot run!"
+    IDS_STR_DB_ERR          "Database error: "
+    IDS_STR_ENTER_TRAN_ID   "Please Enter Transporter ID and Fetch Records Before Trying to Export!"
+    IDS_STR_REPORT_NOT_CREATED "Could Not Create Report File"
+    IDS_STR_DLOAD_NOTFOUND  "Dataload File Not Found!"
+    IDS_STR_UDF_READ_ERR    "Could Not Open UDF File"
+    IDS_STR_SCALE_ERR       "Error getting weight! Aborting weight reading."
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STR_OPTIONS         "Options"
+    IDS_STR_EXIT            "Exit"
+    IDS_STR_SAVE_UDF_FILE   "Do You Want to Save UDF File?"
+    IDS_STR_SAVE_UDF_CAPTION "Save UDF File?"
+    IDS_STR_CODEREAD_ABORTED "Barcode Reading Aborted"
+    IDS_STR_SET_ZERO_WT     "Calibration"
+    IDS_STR_TRANS_ID_EMPTY  "Transporter ID not entered"
+    IDS_STR_SCAN_FOR_TRNSPORTER "Scan Barcode to Select Package Number"
+    IDS_STR_CALIB_MSG       "Camera Alignment assistant is ON. Red box indicates it is too low. Blue box indicates it is too high. Green box indicates it is OK."
+    IDS_STR_CALIBRATION     "Calibration"
+    IDS_STR_CAM_ADJ         "Adjust Camera"
+    IDS_STR_AUTO_ADJ        "Auto Adjust"
+    IDS_STR_PRINT_PARAMS    "Print Params"
+    IDS_STR_SAVE_PICT       "Save Picture"
+    IDS_STR_TEST_PRINT      "Test Print"
+    IDS_STR_LOGO_FILE       "Logo File"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_STR_FREIGHT_PARAMS  "Freight Params"
+    IDS_STR_AIR_FREIGHT     "Select Air Freight"
+    IDS_STR_SEA_FREIGHT     "Select Sea Freight"
+    IDS_STR_DATA_SEND_PARAMS "Data Send"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (India) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENN)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_INDIA
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_START               ICON                    "res\\ico00006.ico"
+
+IDI_STOP                ICON                    "res\\ico00007.ico"
+
+IDI_REPORT_CLKD         ICON                    "res\\ico00008.ico"
+
+IDI_SETTINGS_CLKD       ICON                    "res\\icon3.ico"
+
+IDI_START_CLKD          ICON                    "res\\ico00009.ico"
+
+IDI_STOP_CLKD           ICON                    "res\\ico00010.ico"
+
+IDI_EXIT_CLKD           ICON                    "res\\icon4.ico"
+
+IDI_PRINT_CLKD          ICON                    "res\\ico00011.ico"
+
+IDI_AIR_FREIGHT         ICON                    "res\\ico00012.ico"
+
+IDI_SEA_FREIGHT         ICON                    "res\\ico00013.ico"
+
+IDI_SEA_FREIGHT_CLKD    ICON                    "res\\ico00014.ico"
+
+IDI_AIR_FREIGHT_CLKD    ICON                    "res\\ico00015.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP_LOGO_HJ      BITMAP                  "res\\bmp00016.bmp"
+
+IDB_BITMAP_TOP_BANNER   BITMAP                  "res\\TopBanner.bmp"
+
+IDB_BITMAP_GRID_COL1    BITMAP                  "res\\bmp00017.bmp"
+
+IDB_BITMAP_GRID_COL2    BITMAP                  "res\\bmp00018.bmp"
+
+IDB_BITMAP_GRID_COL3    BITMAP                  "res\\bmp00019.bmp"
+
+IDB_BITMAP_GRID_COL4    BITMAP                  "res\\bmp00020.bmp"
+
+IDB_BITMAP_GRID_COL5    BITMAP                  "res\\bmp00021.bmp"
+
+IDB_BITMAP_CENTRAL_BANNER BITMAP                  "res\\bmp00022.bmp"
+
+IDB_BITMAP_RH_BANNER    BITMAP                  "res\\RH Banner.bmp"
+
+IDB_BITMAP_MM           BITMAP                  "res\\bmp00023.bmp"
+
+IDB_BITMAP_M3           BITMAP                  "res\\bmp00024.bmp"
+
+IDB_BITMAP_KG           BITMAP                  "res\\bmp00025.bmp"
+
+IDB_BITMAP_SEA_FREIGHT_RATE BITMAP                  "res\\bmp00026.bmp"
+
+IDB_BITMAP_AIR_FREIGHT_RATE BITMAP                  "res\\bmp00027.bmp"
+
+IDB_BITMAP_WT_FREIGHT_RATE BITMAP                  "res\\bmp00028.bmp"
+
+IDB_BITMAP_SLIDER_ON    BITMAP                  "res\\bmp00029.bmp"
+
+IDB_BITMAP_SLIDER_OFF   BITMAP                  "res\\bmp00030.bmp"
+
+IDB_BITMAP_DATA_LOGGING BITMAP                  "res\\bmp00031.bmp"
+
+IDB_BITMAP_DATA_FAIL    BITMAP                  "res\\bmp00032.bmp"
+
+IDB_BITMAP_DATA_OK      BITMAP                  "res\\bitmap2.bmp"
+
+IDB_BITMAPDATA_NOT_DONE BITMAP                  "res\\bmp00033.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DLG_CALIB DIALOGEX 0, 0, 309, 176
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Calibration"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,80,141,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,189,141,50,14
+    CONTROL         "Calibrate for Camera Height",IDC_RADIO_CALIB_CAMHEIGHT,
+                    "Button",BS_AUTORADIOBUTTON | WS_GROUP,99,56,105,10
+    CONTROL         "Calibrate for Camera Alignment",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,99,90,116,10
+END
+
+IDD_DLG_PRINT_PARAMS DIALOGEX 0, 0, 359, 274
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Print Parameters"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,92,240,49,26
+    PUSHBUTTON      "Cancel",IDCANCEL,221,240,49,26
+    LTEXT           "Label Height (mm)",IDC_STATIC,28,45,58,8
+    LTEXT           "Label Width (mm)",IDC_STATIC,30,68,56,8
+    COMBOBOX        IDC_CMB_CODE,94,110,91,30,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Font",IDC_STATIC,70,91,16,8
+    LTEXT           "Code Type",IDC_STATIC,50,112,36,8
+    LTEXT           "Code Height (mm)",IDC_STATIC,28,134,58,8
+    LTEXT           "Number of Prints",IDC_STATIC,32,155,54,8
+    EDITTEXT        IDC_EDIT_LABEL_LENGTH,94,43,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LABEL_WIDTH,94,66,40,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_CMB_FONT,94,89,48,30,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_CODE_HT,94,131,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_NUM_PRINTS,94,154,40,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Test Print",IDC_BN_TEST_PRINT,254,204,59,17
+    GROUPBOX        "Print Placement Details",IDC_STATIC,13,23,187,157
+    LTEXT           "Corporate Name",IDC_STATIC,256,35,93,8
+    EDITTEXT        IDC_EDIT_CORPORATE,222,51,120,14,ES_AUTOHSCROLL
+    LTEXT           "Product Name",IDC_STATIC,260,78,85,8
+    EDITTEXT        IDC_EDIT_PRODUCT,222,94,120,14,ES_AUTOHSCROLL
+    LTEXT           "Printer",IDC_STATIC,270,122,54,8
+    EDITTEXT        IDC_EDIT_PRINTER,222,136,120,14,ES_AUTOHSCROLL
+    CONTROL         "Get User OK for Printing",IDC_CHK_PRINT_CNFM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,205,188,10
+    CONTROL         "Print Logo",IDC_CHK_LOGO,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,225,166,46,10
+    PUSHBUTTON      "Logo File",IDC_BN_LOGO_FILE,278,164,50,14,WS_DISABLED
+    LTEXT           "Logo File",IDC_STATIC,188,187,29,8
+    LTEXT           "Static",IDC_STATIC_LOGO_FILE,223,186,127,11
+END
+
+IDD_DLG_FREIGHT_PARAMS DIALOGEX 0, 0, 259, 176
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Freight Parameters"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,71,143,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,137,143,50,14
+    LTEXT           "Sea Freight Rate (",IDC_STATIC,41,38,60,8
+    LTEXT           "USD/M3",IDC_STATIC,200,40,26,8
+    EDITTEXT        IDC_EDIT_SEAFREIGHT_RATE,155,36,40,14,ES_AUTOHSCROLL
+    LTEXT           "Air Freight Rate (",IDC_STATIC,45,68,58,8
+    LTEXT           "USD/M3",IDC_STATIC,200,69,26,8
+    EDITTEXT        IDC_EDIT_AIRFREIGHT_RATE,155,66,40,14,ES_AUTOHSCROLL
+    LTEXT           "Weight Freight Rate (",IDC_STATIC,19,98,69,8
+    LTEXT           "USD/Kg",IDC_STATIC,200,99,25,8
+    EDITTEXT        IDC_EDIT_WEIGHTFREIGHT_RATE,155,95,40,14,ES_AUTOHSCROLL
+    CONTROL         IDB_BITMAP_SEA_FREIGHT_RATE,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,99,36,32,30
+    LTEXT           ")",IDC_STATIC,146,39,8,8
+    CONTROL         IDB_BITMAP_AIR_FREIGHT_RATE,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,102,66,32,30
+    LTEXT           ")",IDC_STATIC,146,68,8,8
+    CONTROL         IDB_BITMAP_WT_FREIGHT_RATE,IDC_STATIC,"Static",SS_BITMAP | SS_REALSIZEIMAGE,90,97,32,30
+    LTEXT           ")",IDC_STATIC,147,97,8,8
+END
+
+IDD_DLG_DATA_SEND DIALOGEX 0, 0, 309, 176
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Data Communication to Server Params"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,82,141,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,178,140,50,14
+    LTEXT           "URL",IDC_STATIC,40,50,14,8
+    LTEXT           "KEY",IDC_STATIC,41,80,13,8
+    EDITTEXT        IDC_EDIT_URL,67,47,185,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_KEY,67,77,185,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_OPERATING_MODE,156,106,40,14,ES_AUTOHSCROLL | ES_NUMBER | NOT WS_VISIBLE
+    LTEXT           "32 chars",IDC_STATIC,257,80,28,8
+    CONTROL         "Send Data",IDC_CHK_SEND_DATA,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,144,19,49,10
+END
+
+IDD_DIALOG1 DIALOGEX 0, 0, 309, 176
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Enter Password"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,102,134,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,156,134,50,14
+    LTEXT           "Enter Unlock Code",IDC_STATIC,98,50,60,8
+    EDITTEXT        IDC_EDIT_PWD,171,47,40,14,ES_PASSWORD | ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DLG_CALIB, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_DLG_PRINT_PARAMS, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 271
+    END
+
+    IDD_DLG_FREIGHT_PARAMS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 252
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_DLG_DATA_SEND, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 169
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DLG_CALIB AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_PRINT_PARAMS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_FREIGHT_PARAMS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_DATA_SEND AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG1 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DLG_PRINT_PARAMS DLGINIT
+BEGIN
+    IDC_CMB_CODE, 0x403, 8, 0
+0x6142, 0x6372, 0x646f, 0x0065, 
+    IDC_CMB_CODE, 0x403, 8, 0
+0x5251, 0x6320, 0x646f, 0x0065, 
+    IDC_CMB_FONT, 0x403, 5, 0
+0x2a38, 0x3231, "\000" 
+    IDC_CMB_FONT, 0x403, 6, 0
+0x3231, 0x322a, 0x0030, 
+    IDC_CMB_FONT, 0x403, 6, 0
+0x3631, 0x322a, 0x0034, 
+    IDC_CMB_FONT, 0x403, 6, 0
+0x3432, 0x332a, 0x0032, 
+    IDC_CMB_FONT, 0x403, 6, 0
+0x3233, 0x342a, 0x0038, 
+    0
+END
+
+#endif    // English (India) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#include "res\PMSHJ.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"      // Standard components
+#include "afxprint.rc"    // printing/print preview resources
+#include "afxdb.rc"        // Database resources
+#if !defined(_AFXDLL)
+#include "afxribbon.rc"        // MFC ribbon and control bar resources
+#endif
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A48D59DE-B9F2-457F-BBE1-16674E84CD1E}</ProjectGuid>
+    <RootNamespace>PMSHJ</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\OpenCV320\opencv\build\include\opencv;C:\OpenCV320\opencv\build\include\opencv2;C:\OpenCV320\opencv\build\include;C:\Program Files\OpenNI2\Include;$(ExecutablePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files\OpenNI2\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\OpenCV320\opencv\build\include\opencv;C:\OpenCV320\opencv\build\include\opencv2;C:\OpenCV320\opencv\build\include;C:\Program Files\OpenNI2\Include;$(ExecutablePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\OpenCV320\opencv\build\include\opencv;C:\OpenCV320\opencv\build\include\opencv2;C:\OpenCV320\opencv\build\include;$(ExecutablePath);C:\Program Files (x86)\OpenNI2\Include;Dongle_API.h;D:\PMSOS\HJ\CL Express\json-develop\include;D:\Duravision\PPSAntar\vcpkg-master\installed\x86-windows\include</AdditionalIncludeDirectories>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>odbc32.lib;%(AdditionalDependencies);opencv_world300d.lib;cvblobslibd.lib;OpenNI2.lib;Dongle_s.lib;TSCLib.lib;MVIDCodeReader.lib;bcrypt.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libc.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\OpenCV320\opencv\build\include;C:\OpenCV320\opencv\build\include\opencv;C:\OpenCV320\opencv\build\include\opencv2;C:\Program Files\OpenNI2\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>odbc32.lib;OpenNI2;opencv_world300d.lib;TSCLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\OpenCV320\opencv\build\include\opencv;C:\OpenCV320\opencv\build\include\opencv2;C:\OpenCV320\opencv\build\include;$(ExecutablePath);C:\Program Files (x86)\OpenNI2\Include;Dongle_API.h;D:\PMSOS\HJ\CL Express\json-develop\include;D:\Duravision\PPSAntar\vcpkg-master\installed\x86-windows\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>odbc32.lib;%(AdditionalDependencies);opencv_world300.lib;cvblobslib.lib;OpenNI2.lib;Dongle_s.lib;TSCLib.lib;MVIDCodeReader.lib;bcrypt.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libc.lib</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="AutoSaveImage.h" />
+    <ClInclude Include="blob.h" />
+    <ClInclude Include="BlobContour.h" />
+    <ClInclude Include="BlobLibraryConfiguration.h" />
+    <ClInclude Include="BlobOperators.h" />
+    <ClInclude Include="BlobProperties.h" />
+    <ClInclude Include="BlobResult.h" />
+    <ClInclude Include="CImage.h" />
+    <ClInclude Include="ComponentLabeling.h" />
+    <ClInclude Include="ComPortList.h" />
+    <ClInclude Include="DebugDump.h" />
+    <ClInclude Include="defines.h" />
+    <ClInclude Include="DlgCalib.h" />
+    <ClInclude Include="DlgDataSendParams.h" />
+    <ClInclude Include="DlgFreightParams.h" />
+    <ClInclude Include="DlgInspParams.h" />
+    <ClInclude Include="DlgOptions.h" />
+    <ClInclude Include="DlgPassword.h" />
+    <ClInclude Include="DlgPrintParams.h" />
+    <ClInclude Include="DlgReport.h" />
+    <ClInclude Include="DlgSerialPortParams.h" />
+    <ClInclude Include="DlgSettings.h" />
+    <ClInclude Include="DlgUDFFileEdit.h" />
+    <ClInclude Include="DlgWtSettings.h" />
+    <ClInclude Include="EnumDevices.h" />
+    <ClInclude Include="font.h" />
+    <ClInclude Include="IHighResTimer.h" />
+    <ClInclude Include="IniFile.h" />
+    <ClInclude Include="IOutputLog.h" />
+    <ClInclude Include="KeyBoardHookLib.h" />
+    <ClInclude Include="labelcontrol.h" />
+    <ClInclude Include="label_gross_weight3.h" />
+    <ClInclude Include="Language.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="msflexgrid.h" />
+    <ClInclude Include="MySocket.h" />
+    <ClInclude Include="picture.h" />
+    <ClInclude Include="PMSHJ.h" />
+    <ClInclude Include="PMSHJDoc.h" />
+    <ClInclude Include="PMSHJSet.h" />
+    <ClInclude Include="PMSHJView.h" />
+    <ClInclude Include="Registry.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SerialBuffer.h" />
+    <ClInclude Include="SerialCommHelper.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Structures.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="ThreadFootSwitch.h" />
+    <ClInclude Include="ThreadHikVCode.h" />
+    <ClInclude Include="ThreadPrintLabel.h" />
+    <ClInclude Include="ThreadReadWeight.h" />
+    <ClInclude Include="ThreadScanCode.h" />
+    <ClInclude Include="ThreadSendDataToServer.h" />
+    <ClInclude Include="ThreadTCP.h" />
+    <ClInclude Include="TSCLib.h" />
+    <ClInclude Include="xShadeButton.h" />
+    <ClInclude Include="YieldData.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AutoSaveImage.cpp" />
+    <ClCompile Include="blob.cpp" />
+    <ClCompile Include="BlobContour.cpp" />
+    <ClCompile Include="BlobOperators.cpp" />
+    <ClCompile Include="BlobResult.cpp" />
+    <ClCompile Include="Cimage.cpp" />
+    <ClCompile Include="ComponentLabeling.cpp" />
+    <ClCompile Include="ComPortList.cpp" />
+    <ClCompile Include="DlgCalib.cpp" />
+    <ClCompile Include="DlgDataSendParams.cpp" />
+    <ClCompile Include="DlgFreightParams.cpp" />
+    <ClCompile Include="DlgInspParams.cpp" />
+    <ClCompile Include="DlgOptions.cpp" />
+    <ClCompile Include="DlgPassword.cpp" />
+    <ClCompile Include="DlgPrintParams.cpp" />
+    <ClCompile Include="DlgReport.cpp" />
+    <ClCompile Include="DlgSerialPortParams.cpp" />
+    <ClCompile Include="DlgSettings.cpp" />
+    <ClCompile Include="DlgUDFFileEdit.cpp" />
+    <ClCompile Include="DlgWtSettings.cpp" />
+    <ClCompile Include="EnumDevices.cpp" />
+    <ClCompile Include="font.cpp" />
+    <ClCompile Include="IHighResTimer.cpp" />
+    <ClCompile Include="IniFile.cpp" />
+    <ClCompile Include="IOutputLog.cpp" />
+    <ClCompile Include="labelcontrol.cpp" />
+    <ClCompile Include="label_gross_weight3.cpp" />
+    <ClCompile Include="Language.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="msflexgrid.cpp" />
+    <ClCompile Include="MySocket.cpp" />
+    <ClCompile Include="picture.cpp" />
+    <ClCompile Include="PMSHJ.cpp" />
+    <ClCompile Include="PMSHJDoc.cpp" />
+    <ClCompile Include="PMSHJSet.cpp" />
+    <ClCompile Include="PMSHJView.cpp" />
+    <ClCompile Include="Registry.cpp" />
+    <ClCompile Include="SerialBuffer.cpp" />
+    <ClCompile Include="SerialCommHelper.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ThreadFootSwitch.cpp" />
+    <ClCompile Include="ThreadHikVCode.cpp" />
+    <ClCompile Include="ThreadPrintLabel.cpp" />
+    <ClCompile Include="ThreadReadWeight.cpp" />
+    <ClCompile Include="ThreadScanCode.cpp" />
+    <ClCompile Include="ThreadSendDataToServer.cpp" />
+    <ClCompile Include="ThreadTCP.cpp" />
+    <ClCompile Include="xShadeButton.cpp" />
+    <ClCompile Include="YieldData.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PMSHJ.reg" />
+    <None Include="res\PMSHJ.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PMSHJ.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\bitmap2.bmp" />
+    <Image Include="res\bmp00001.bmp" />
+    <Image Include="res\bmp00002.bmp" />
+    <Image Include="res\bmp00003.bmp" />
+    <Image Include="res\bmp00004.bmp" />
+    <Image Include="res\bmp00005.bmp" />
+    <Image Include="res\bmp00006.bmp" />
+    <Image Include="res\bmp00007.bmp" />
+    <Image Include="res\bmp00008.bmp" />
+    <Image Include="res\bmp00009.bmp" />
+    <Image Include="res\bmp00010.bmp" />
+    <Image Include="res\bmp00011.bmp" />
+    <Image Include="res\bmp00012.bmp" />
+    <Image Include="res\bmp00013.bmp" />
+    <Image Include="res\bmp00014.bmp" />
+    <Image Include="res\bmp00015.bmp" />
+    <Image Include="res\bmp00016.bmp" />
+    <Image Include="res\bmp00017.bmp" />
+    <Image Include="res\bmp00018.bmp" />
+    <Image Include="res\bmp00019.bmp" />
+    <Image Include="res\bmp00020.bmp" />
+    <Image Include="res\bmp00021.bmp" />
+    <Image Include="res\bmp00022.bmp" />
+    <Image Include="res\bmp00023.bmp" />
+    <Image Include="res\bmp00024.bmp" />
+    <Image Include="res\bmp00025.bmp" />
+    <Image Include="res\bmp00026.bmp" />
+    <Image Include="res\bmp00027.bmp" />
+    <Image Include="res\bmp00028.bmp" />
+    <Image Include="res\bmp00029.bmp" />
+    <Image Include="res\bmp00030.bmp" />
+    <Image Include="res\bmp00031.bmp" />
+    <Image Include="res\bmp00032.bmp" />
+    <Image Include="res\bmp00033.bmp" />
+    <Image Include="res\ico00001.ico" />
+    <Image Include="res\ico00002.ico" />
+    <Image Include="res\ico00003.ico" />
+    <Image Include="res\ico00004.ico" />
+    <Image Include="res\ico00005.ico" />
+    <Image Include="res\ico00006.ico" />
+    <Image Include="res\ico00007.ico" />
+    <Image Include="res\ico00008.ico" />
+    <Image Include="res\ico00009.ico" />
+    <Image Include="res\ico00010.ico" />
+    <Image Include="res\ico00011.ico" />
+    <Image Include="res\ico00012.ico" />
+    <Image Include="res\ico00013.ico" />
+    <Image Include="res\ico00014.ico" />
+    <Image Include="res\ico00015.ico" />
+    <Image Include="res\icon1.ico" />
+    <Image Include="res\icon2.ico" />
+    <Image Include="res\icon3.ico" />
+    <Image Include="res\icon4.ico" />
+    <Image Include="res\PMSHJ.ico" />
+    <Image Include="res\PMSHJDoc.ico" />
+    <Image Include="res\RH Banner.bmp" />
+    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\Toolbar256.bmp" />
+    <Image Include="res\TopBanner.bmp" />
+    <Image Include="UserImages.bmp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="PMSHJ.rc" _x007B_6262D3A0-531B-11CF-91F6-C2863C385E30_x007D_="CMsflexgrid1" _x007B_978C9E23-D4B0-11CE-BF2D-00AA003F40D0_x007D_="CLabel_gross_weight3" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
