@@ -29,6 +29,9 @@ struct STInspParams
 	double	dMinWt;
 	int		nDsplAccuracy;// Added to show less variation in displayed dims. Display will be changed only if variation is more than this.
 	int		nCamAlignRectSize;
+	CString	strBarcodeValMin;
+	CString	strBarcodeValMax;
+	BOOL	bUseCodeRange;// Barcode is considered valid only if it is within a certain range
 
 	STInspParams()
 	{
@@ -52,7 +55,8 @@ struct STInspParams
 		dMinWt				= 0.5;
 		nDsplAccuracy		= 5;
 		nCamAlignRectSize	= 240;
-
+		bUseCodeRange		= FALSE;
+		strBarcodeValMin	= strBarcodeValMax = "0";// Code considered valid only if within this range. If both are '0' the range funda is not applicable.
 	}
 	STInspParams(STInspParams &other)
 	{
@@ -72,6 +76,9 @@ struct STInspParams
 		dMinWt				= other.dMinWt;
 		nDsplAccuracy		= other.nDsplAccuracy;
 		nCamAlignRectSize	= other.nCamAlignRectSize;
+		bUseCodeRange		= other.bUseCodeRange;
+		strBarcodeValMin	= other.strBarcodeValMin;
+		strBarcodeValMax	= other.strBarcodeValMax;
 	}
 
 	STInspParams& operator = (STInspParams& other)
@@ -91,7 +98,10 @@ struct STInspParams
 		nBarcodeLengthMax	= other.nBarcodeLengthMax;
 		dMinWt				= other.dMinWt;
 		nDsplAccuracy		= other.nDsplAccuracy;
-		nCamAlignRectSize = other.nCamAlignRectSize;
+		nCamAlignRectSize	= other.nCamAlignRectSize;
+		bUseCodeRange		= other.bUseCodeRange;
+		strBarcodeValMin	= other.strBarcodeValMin;
+		strBarcodeValMax	= other.strBarcodeValMax;
 
 		return *this;
 	}
@@ -665,29 +675,37 @@ struct STFreightParams
 
 struct STServerCommParams
 {
-	CString strURL;
-	CString strKey;
+	CString strURL1;// Web  addr 1
+	CString strKey1;
+	CString strURL2;// Web  addr 2
+	CString strKey2;
 	int nOperateMode;
 	BOOL bSendDataToServer;
 
 	STServerCommParams()
 	{
-		strURL = "http://47.114.126.132:9983/system/packing/data";;
-		strKey = "vbD#&!f&P&24$9x8XC*Q%Z^VJPiKNNg@";;
+		strURL1 = "http://47.114.126.132:9983/system/packing/data";
+		strKey1 = "vbD#&!f&P&24$9x8XC*Q%Z^VJPiKNNg@";
+		strURL2 = "";
+		strKey2 = "";
 		nOperateMode = 1;
 		bSendDataToServer = TRUE;
 	}
 	STServerCommParams(STServerCommParams &other)
 	{
-		strURL = other.strURL;
-		strKey = other.strKey;
+		strURL1 = other.strURL1;
+		strKey1 = other.strKey1;
+		strURL2 = other.strURL2;
+		strKey2 = other.strKey2;
 		nOperateMode = other.nOperateMode;
 		bSendDataToServer = other.bSendDataToServer;
 	}
 	STServerCommParams& operator = (STServerCommParams& other)
 	{
-		strURL = other.strURL;
-		strKey = other.strKey;
+		strURL1 = other.strURL1;
+		strKey1 = other.strKey1;
+		strURL2 = other.strURL2;
+		strKey2 = other.strKey2;
 		nOperateMode = other.nOperateMode;
 		bSendDataToServer = other.bSendDataToServer;
 

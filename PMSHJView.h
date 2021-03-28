@@ -89,6 +89,7 @@ public:
 	//cv::Mat		m_ZPlatform;
 	CvFont*		m_font;
 	eDataLoggingStatus m_DataLoggingStatus;
+	eBarCodeReadStatus m_BarCodeReadStatus;
 
 	CString		m_strBoxWidth;
 	CString		m_strBoxLength;
@@ -186,6 +187,7 @@ public:
 	double	GetFreight(STInspResult InspResult, STFreightParams stFreightParams, eFreightMode &ActualFreightMode);
 	CString	GetStringToSendToServer(CString strData, CString strSeed);
 	void	SetDataLoggingStatus(eDataLoggingStatus DataLoggingStatus);
+	void	SetCodeReadStatus(eBarCodeReadStatus BarCodeReadStatus);// Sets bitmap in the same picture control as data logging
 
 	CvRect	CRectToCVRect(CRect rect)
 	{

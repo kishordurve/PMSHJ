@@ -1,0 +1,80 @@
+PMSEXOS string resources for language change
+Buttons:
+Settings
+Report
+Print
+Scan
+Stop
+Length
+Width
+Height
+Volume
+Net Weight
+Gross Weight
+Tare Weight
+Pre Tare Weight
+Scan Data Displayed
+W/F Barcode
+Package No.
+Settings
+Weight Settings
+COM Port Settings
+Read UDF File
+Save UDF File
+Inspection Params
+Barcode Test
+OK
+Cancel
+Weight Settings
+Set Zero Weight
+Set Tare Weight
+Set Pre Tare W/F
+Serial Port Parameters
+Select COM Port for Weight Scale and Printer
+Select Port
+Input to Weigh Scale
+Output from Weigh Scale
+Printer
+Set Params
+COM Port Parameters
+Baud Rate
+Byte Size
+Parity
+Stop Bit
+Weigh Scale Type
+Data Transmission Type
+Continuous
+Stable
+Edit and Save UDF File
+Use CTRL+Enter to go to next line
+Camera Height from Platform
+Min Job Height
+Max Job Height
+Min Job Weight
+Spot Rect Size
+Barcode Length
+Cuboid Box
+Flip Image Vertical
+Flip Image Horizontal
+Show Records
+Delete Records
+Scan Records for a Transporter
+Transporter Number
+Enter Manually
+Scan Barcode
+Fetch Records
+Export
+Done
+Scan Stopped
+3D Camera Not Initialized
+Scanning under progress. W/F Barcode scan
+Weight cannot be read
+Scan Started
+Stop Scanning
+Error in Image Grabbing
+Scan Data Invalid
+Scan Data Displayed. W/F Barcode.
+Barcode Received
+Data Saved Successfully
+Data Could Not Be Saved
+Scanning Over

@@ -27,8 +27,8 @@ public:
 	STInspResult m_stInspResult;
 
 	std::string hextostr(std::vector<unsigned char> const & hexval, bool uppercase = false);
-	CString CreateHash(CString strData, CString strKey);
-	eDataLoggingStatus SendDataToServer(CString strURL, json JsonDataSea);
+	CString CreateHash(CString strData, CString strKey1);
+	eDataLoggingStatus SendDataToServer(CString strURL1, json JsonDataSea);
 	//Struct for the data to be send
 	struct SendData
 	{

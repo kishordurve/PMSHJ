@@ -116,18 +116,18 @@ BOOL CPMSHJApp::InitInstance()
 	CString dateStr("");
 	dateStr.Format(L"%02d%02d", time.GetMonth(), time.GetYear());
 	BOOL bLicenseValid = TRUE;
-	if (time.GetYear() == 2020)
-	{
-		if (time.GetMonth() != 12)
-			bLicenseValid = FALSE;
-	}
-	else if (time.GetYear() == 2021)
-	{
-		if (time.GetMonth() > 1)
-			bLicenseValid = FALSE;
-	}
-	else
-		bLicenseValid = FALSE;
+	//if (time.GetYear() == 2020)
+	//{
+	//	if (time.GetMonth() != 12)
+	//		bLicenseValid = FALSE;
+	//}
+	//else if (time.GetYear() == 2021)
+	//{
+	//	if (time.GetMonth() > 1)
+	//		bLicenseValid = FALSE;
+	//}
+	//else
+	//	bLicenseValid = FALSE;
 
 	// Set this to include all the common control classes you want to use
 	// in your application.
@@ -201,22 +201,24 @@ BOOL CPMSHJApp::InitInstance()
 	// app was launched with /RegServer, /Register, /Unregserver or /Unregister.
 	if (!ProcessShellCommand(cmdInfo))
 		return FALSE;
-	if (bLicenseValid == FALSE)
-	{
-		if (!GetLicenseStatus())
-		{
-			CDlgPassword dlg;
-			if (dlg.DoModal() == IDOK)
-			{
-				if (dlg.m_strPWD != "5ba5be36gns")
-				{
-					AfxMessageBox(L"License Expired!");
-					return FALSE;
-				}
-				SetLicenseStatus(TRUE);
-			}
-		}
-	}
+	//if (bLicenseValid == FALSE)
+	//{
+	//	if (!GetLicenseStatus())
+	//	{
+	//		CDlgPassword dlg;
+	//		if (dlg.DoModal() == IDOK)
+	//		{
+	//			if (dlg.m_strPWD != "5ba5be36gns")
+	//			{
+	//				AfxMessageBox(L"License Expired!");
+	//				return FALSE;
+	//			}
+	//			SetLicenseStatus(TRUE);
+	//		}
+	//		else
+	//			return FALSE;
+	//	}
+	//}
 
 	// Multi language code
 	m_pLanguage = CLanguage::Instance();
@@ -228,7 +230,7 @@ BOOL CPMSHJApp::InitInstance()
 	// The one and only window has been initialized, so show and update it
 	m_pMainWnd->ShowWindow(SW_SHOW);//SW_SHOW / SW_HIDE to show / hide the window
 	m_pMainWnd->UpdateWindow();
-	IOutputLog(L"\nWindow Up!");
+	//IOutputLog(L"\nWindow Up!");
 	// call DragAcceptFiles only if there's a suffix
 	//  In an SDI app, this should occur after ProcessShellCommand
 	// Enable drag/drop open
@@ -239,7 +241,7 @@ BOOL CPMSHJApp::InitInstance()
 	if (!VerifyDongle())
 	{
 		AfxMessageBox(L"Dongle Not Found or Incorrect one! Application can't run.");
-		return FALSE;
+		//return FALSE;
 	}
 	m_strProjectDir = GetProjectDirectory();
 	GetCurMachineNameFromRegistry();
@@ -252,13 +254,13 @@ BOOL CPMSHJApp::InitInstance()
 	sDLLPath += _T("\\Lng\\PMSEXOCN.dll");// For Chinese - need to make dll. Look at D:\\Dimensioner\\Multiligual folder
 	// Load default system language
 	LANGID LAN = GetSystemDefaultLangID();// Hex 809 (decimal 2057 is English), Chinese = Hex 804 (decimal 2052) 
-	IOutputLog(L"Before Loading Language!");
+	//IOutputLog(L"Before Loading Language!");
 	//m_stOptions.Language = ENGLISH;
 	if (m_stOptions.Language == ENGLISH)
 	{
 		bool bSuccess = m_pLanguage->LoadLanguage(2057);
 		AfxGetApp()->m_pMainWnd->DrawMenuBar();
-		WriteLog(_T("Load Language Successful !!!"));
+		//WriteLog(_T("Load Language Successful !!!"));
 	}
 	else // Load Chinese
 	{
@@ -268,13 +270,13 @@ BOOL CPMSHJApp::InitInstance()
 			WriteLog(_T("Load Language Failed!!!"));
 	}
 	m_pYield = new CYieldData;
-	IOutputLog(L"Entering InitCamera()!");
+	//IOutputLog(L"Entering InitCamera()!");
 	m_bCam3DAvailable = InitCameraOrbbec();
 	// Verify camera sl no.
 	if (m_bCam3DAvailable)
 	{
 		CString strSlNum = GetCameraSlNumber();
-		if (strSlNum != L"18101830718")// Excell first machine - 18112130914, At LT - 18101830208 (new camera near my table), 
+		if (strSlNum != L"18101730221")// Excell first machine - 18112130914, At LT - 18101830208 (new camera near my table), 
 		{								// 18101831048 (Showroom Cabinet), 18101831260 (Showroom Column type), 18112130209 (new customer (P5)March 2020)
 										// 18101831036 (GRAM) 
 										// 18101831041 (New customer - 31st Aug 2020)
@@ -328,7 +330,7 @@ BOOL CPMSHJApp::InitInstance()
 		if (m_stOptions.bWtRqd)
 		{
 			m_bReadWtThreadUp = StartWeighScaleReadThread();
-			//IOutputLog(L"After StartWeighScaleReadThread()");
+			IOutputLog(L"After StartWeighScaleReadThread()");
 		}
 		else
 			IOutputLog(L"Weight Check OFF");
@@ -354,11 +356,11 @@ BOOL CPMSHJApp::InitInstance()
 
 			m_pFrame->m_pImageView->UpdateWeight(0, 0, 0, 0, m_stOptions.strWtUnit, 1);
 		}
-		IOutputLog(L"After Call to Starting Weighing scale thread");
+		//IOutputLog(L"After Call to Starting Weighing scale thread");
 		if ((m_stOptions.bSerialPortScanner) || (m_stOptions.bHikVisionScanner))
 		{
 			m_bScannerThreadUp = StartCodeScannerThread();
-			IOutputLog(L"After Call to Starting Scanner thread");
+			//IOutputLog(L"After Call to Starting Scanner thread");
 		}
 		if (m_stOptions.bUseFootSwitch)
 		{
@@ -371,7 +373,7 @@ BOOL CPMSHJApp::InitInstance()
 		if (m_bCam3DAvailable)// && m_bReadWtThreadUp)
 		{
 			//std::wstring str(");// m_pLanguage->GetString(IDS_STR_SCAN_UP);
-			IOutputLog(L"After call to GetString(IDS_STR_SCAN_UP)");
+			//IOutputLog(L"After call to GetString(IDS_STR_SCAN_UP)");
 			CString strTemp(L"Scan ON");// (str.c_str());
 			if (bCanStartScan)
 			{
@@ -494,7 +496,7 @@ BOOL CPMSHJApp::StartCodeScannerThread()
 	}
 	else if (m_stOptions.bHikVisionScanner)
 	{
-		m_pThreadHikVCode = new CThreadHikVCode(m_stInspParams.nBarcodeLengthMin, m_stInspParams.nBarcodeLengthMax, m_cEndChar);
+		m_pThreadHikVCode = new CThreadHikVCode(m_stInspParams.nBarcodeLengthMin, m_stInspParams.nBarcodeLengthMax, m_cEndChar, m_stInspParams.strBarcodeValMin, m_stInspParams.strBarcodeValMax);
 		if (!m_pThreadHikVCode->CreateThread(CREATE_SUSPENDED))
 		{
 			delete m_pThreadHikVCode;
@@ -1013,8 +1015,8 @@ BOOL CPMSHJApp::WriteWeighScaleParamsToRegistry()
 BOOL CPMSHJApp::GetSendDataParamsFromRegistry()
 {
 	BOOL bResult = TRUE;
-	m_stServerCommParams.strKey = IGetProfileString(L"Settings", L"strKey", L"vbD#&!f&P&24$9x8XC*Q%Z^VJPiKNNg@");
-	m_stServerCommParams.strURL = IGetProfileString(L"Settings", L"strURL", L"http://47.114.126.132:9983/system/packing/data");
+	m_stServerCommParams.strKey1 = IGetProfileString(L"Settings", L"strKey1", L"vbD#&!f&P&24$9x8XC*Q%Z^VJPiKNNg@");
+	m_stServerCommParams.strURL1 = IGetProfileString(L"Settings", L"strURL1", L"http://47.114.126.132:9983/system/packing/data");
 	m_stServerCommParams.nOperateMode = IGetProfileInt(L"Settings", L"OperateMode", 1);
 	m_stServerCommParams.bSendDataToServer = IGetProfileInt(L"Settings", L"SendDataToServer", 1);
 
@@ -1024,8 +1026,8 @@ BOOL CPMSHJApp::GetSendDataParamsFromRegistry()
 BOOL CPMSHJApp::WriteSendDataParamsToRegistry()
 {
 	BOOL bResult = TRUE;
-	bResult &= WriteProfileString(L"Settings\\", L"strKey", m_stServerCommParams.strKey);
-	bResult &= WriteProfileString(L"Settings\\", L"strURL", m_stServerCommParams.strURL);
+	bResult &= WriteProfileString(L"Settings\\", L"strKey1", m_stServerCommParams.strKey1);
+	bResult &= WriteProfileString(L"Settings\\", L"strURL1", m_stServerCommParams.strURL1);
 	WriteProfileInt(L"Settings\\", L"OperateMode", m_stServerCommParams.nOperateMode);
 	WriteProfileInt(L"Settings\\", L"SendDataToServer", m_stServerCommParams.bSendDataToServer);
 
@@ -1578,8 +1580,16 @@ BOOL CPMSHJApp::WriteInspParamsToRegistry()
 	bResult = WriteProfileInt(L"Settings\\", L"BarcodeLengthMax", m_stInspParams.nBarcodeLengthMax);
 	bResult = WriteProfileInt(L"Settings\\", L"Accuracy", m_stInspParams.nDsplAccuracy);
 	bResult = WriteProfileInt(L"Settings\\", L"CamAlignRectSize", m_stInspParams.nCamAlignRectSize);
+	bResult = WriteProfileInt(L"Settings\\", L"UseCodeRange", m_stInspParams.bUseCodeRange);
 	str.Format(L"%2.2f", m_stInspParams.dMinWt);
 	bResult = WriteProfileString(L"Settings\\", L"MinWt", str);
+	bResult = WriteProfileString(L"Settings\\", L"BarcodeValMin", m_stInspParams.strBarcodeValMin);
+	bResult = WriteProfileString(L"Settings\\", L"BarcodeValMax", m_stInspParams.strBarcodeValMax);
+	if (m_pThreadHikVCode)
+	{
+		m_pThreadHikVCode->m_strBarcodeValMin = m_stInspParams.strBarcodeValMin;
+		m_pThreadHikVCode->m_strBarcodeValMax = m_stInspParams.strBarcodeValMax;
+	}
 	return bResult;
 }// WriteInspParamsToRegistry()
 
@@ -1608,10 +1618,13 @@ BOOL CPMSHJApp::GetInspParamsFromRegistry()
 	m_stInspParams.nBarcodeLengthMax = IGetProfileInt(L"Settings", L"BarcodeLengthMax", 18);
 	m_stInspParams.nDsplAccuracy = IGetProfileInt(L"Settings", L"Accuracy", 5);
 	m_stInspParams.nCamAlignRectSize = IGetProfileInt(L"Settings", L"CamAlignRectSize", 240);
+	m_stInspParams.bUseCodeRange = IGetProfileInt(L"Settings", L"UseCodeRange", FALSE);
 
 	CString str;
-	str.Format(L"%2.2f", m_stInspParams.dMinWt);
 	str = IGetProfileString(L"Settings\\", L"MinWt", L"0.05");
+	m_stInspParams.dMinWt = _wtof(str);
+	m_stInspParams.strBarcodeValMin = IGetProfileString(L"Settings\\", L"BarcodeValMin", L"0");
+	m_stInspParams.strBarcodeValMax = IGetProfileString(L"Settings\\", L"BarcodeValMax", L"0");
 
 	return bResult;
 }
@@ -1774,7 +1787,7 @@ BOOL CPMSHJApp::VerifyDongle()
 
 	DWORD dwRet = 0;
 	int nCount = 0;
-	char AdminPin[] = "0488AC09CBFE8866"; // 0x73 BFB2F38770F8212C Excell 1st Machine; 0x54 A555478B750F5152 Dell machine in showroom
+	char AdminPin[] = "6B6801A738E64268"; // 0x73 BFB2F38770F8212C Excell 1st Machine; 0x54 A555478B750F5152 Dell machine in showroom
 										// 0x14 33299B2FB0BC95F3  Pillar type machine in showroom (NUC)
 										// 0FD62B3BAC3E516F New customer (P5) March 2020
 										// 65E6F314E57A2012 (seed 0x16) GRAM - 6th May 2020

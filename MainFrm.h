@@ -87,6 +87,7 @@ protected:
 	afx_msg LRESULT OnRcdFootSwitchReadFail(WPARAM wParam, LPARAM lParam);
 	afx_msg LRESULT OnRcdDataLogStatus(WPARAM wParam, LPARAM lParam);
 	afx_msg LRESULT OnRcdWeighScaleError(WPARAM wParam, LPARAM lParam);
+	afx_msg LRESULT OnRcdCodeReadStatus(WPARAM wParam, LPARAM lParam);
 	DECLARE_MESSAGE_MAP()
 
 public:

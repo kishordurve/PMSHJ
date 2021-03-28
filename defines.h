@@ -33,6 +33,7 @@ enum eScrTimeOut { OFF = 0, Min1, Min5, Min10, Min15 };
 enum eCodeType { Barcode = 0, DMcode, QRcode};// DMcode is added as QRcode is '2' in HikVision library MVID_CODE_TDCR_QR = 2
 enum eDataLoggingStatus { DATA_OK = 0, DATA_NOT_DONE, DATA_FAIL};
 enum eFreightMode {FREIGHT_AIR = 1, FREIGHT_SEA, FREIGHT_WT}; // Purposely starting with '1' 
+enum eBarCodeReadStatus {CODE_OK = 0, CODE_OUT_OF_RANGE, CODE_WRONG_LENGTH};
 
 const float DEF_XCALIB			= 0.055f;
 const float DEF_YCALIB			= 0.050f;
@@ -87,6 +88,7 @@ const float		DEFAULT_YIELD_THRESHOLD = 0;
 #define WM_FOOT_SW_READ_FAIL	WM_USER + 210
 #define WM_DATA_LOG_STATUS		WM_USER + 211
 #define WM_WEIGHT_ERROR			WM_USER + 212
+#define WM_CODE_READ_STATUS		WM_USER + 213
 
 // camera pane information
 #define CAM_PANE_WIDTH_FULL_SCREEN      1024

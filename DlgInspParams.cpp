@@ -25,6 +25,9 @@ CDlgInspParams::CDlgInspParams(CWnd* pParent /*=NULL*/)
 	, m_nDsplAccuracy(0)
 	, m_nCamAlignRectSize(180)
 	, m_nBarcodeLengthMax(0)
+	, m_bUseCodeRange(FALSE)
+	, m_strBarcodeValMin(_T(""))
+	, m_strBarcodeValMax(_T(""))
 {
 
 }
@@ -57,13 +60,19 @@ void CDlgInspParams::DoDataExchange(CDataExchange* pDX)
 	DDV_MinMaxInt(pDX, m_nDsplAccuracy, 0, 3);
 	DDX_Text(pDX, IDC_EDIT_CAM_ALIGN_RECT_SIZE, m_nCamAlignRectSize);
 	DDV_MinMaxInt(pDX, m_nCamAlignRectSize, 120, 360);
-	DDX_Text(pDX, IDC_EDIT_CODE_LEN_MAX, m_nBarcodeLengthMax);
+	DDX_Text(pDX, IDC_EDIT_MAX_CODE_LEN, m_nBarcodeLengthMax);
 	DDV_MinMaxInt(pDX, m_nBarcodeLengthMax, 3, 64);
+	DDX_Check(pDX, IDC_CHK_USE_CODE_RANGE, m_bUseCodeRange);
+	DDX_Text(pDX, IDC_EDIT_MIN_CODE_VAL, m_strBarcodeValMin);
+	DDV_MaxChars(pDX, m_strBarcodeValMin, 48);
+	DDX_Text(pDX, IDC_EDIT_MAX_CODE_VAL, m_strBarcodeValMax);
+	DDV_MaxChars(pDX, m_strBarcodeValMax, 48);
 }
 
 
 BEGIN_MESSAGE_MAP(CDlgInspParams, CDialogEx)
 	ON_WM_CTLCOLOR()
+	ON_BN_CLICKED(IDC_CHK_USE_CODE_RANGE, &CDlgInspParams::OnBnClickedChkUseCodeRange)
 END_MESSAGE_MAP()
 
 
@@ -117,6 +126,13 @@ BOOL CDlgInspParams::OnInitDialog()
 	else if (pApp->m_stInspParams.nDsplAccuracy == 10)
 		m_nDsplAccuracy = 3;
 	//
+	m_bUseCodeRange = pApp->m_stInspParams.bUseCodeRange;
+	if (m_bUseCodeRange)
+	{
+		m_strBarcodeValMin = pApp->m_stInspParams.strBarcodeValMin;
+		m_strBarcodeValMax = pApp->m_stInspParams.strBarcodeValMax;
+	}
+
 	UpdateData(FALSE);
 	return TRUE;  // return TRUE unless you set the focus to a control
 				  // EXCEPTION: OCX Property Pages should return FALSE
@@ -162,6 +178,28 @@ void CDlgInspParams::OnOK()
 			pApp->m_stInspParams.nDsplAccuracy = 5;
 		else if (m_nDsplAccuracy == 3)
 			pApp->m_stInspParams.nDsplAccuracy = 10;
+		pApp->m_stInspParams.bUseCodeRange = m_bUseCodeRange;
+		// Validate min / max 
+		if (m_bUseCodeRange)
+		{
+			//CString str = m_strBarcodeValMin;
+			//for (int i = 0; i < str.GetLength(); i++)
+			//	if (!isdigit(str[i]))
+			//		str.Remove(str[i--]);
+			//int nLower = _wtoi(str.GetString());
+			//str = m_strBarcodeValMax;
+			//for (int i = 0; i < str.GetLength(); i++)
+			//	if (!isdigit(str[i]))
+			//		str.Remove(str[i--]);
+			//double nUpper = _wtof(str.GetString());// 'double' to avoid overflow problems
+			if (m_strBarcodeValMax < m_strBarcodeValMin)
+			{
+				AfxMessageBox(L"Code Range lower limit is higher than the upper limit! Please correct it.");
+				return;
+			}
+			pApp->m_stInspParams.strBarcodeValMin = m_strBarcodeValMin;
+			pApp->m_stInspParams.strBarcodeValMax = m_strBarcodeValMax;
+		}
 
 		pApp->WriteInspParamsToRegistry();
 		CDialogEx::OnOK();
@@ -176,7 +214,9 @@ HBRUSH CDlgInspParams::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 	if ((pWnd->GetDlgCtrlID() == IDC_EDIT_CAM_HT) || (pWnd->GetDlgCtrlID() == IDC_EDIT_MIN_WT) || 
 		(pWnd->GetDlgCtrlID() == IDC_EDIT_MIN_JOB_HT) || (pWnd->GetDlgCtrlID() == IDC_EDIT_MAX_JOB_HT) || 
 		(pWnd->GetDlgCtrlID() == IDC_EDIT_SPOT_RECT_SIZE) || (pWnd->GetDlgCtrlID() == IDC_EDIT_CODE_LEN) || 
-		(pWnd->GetDlgCtrlID() == IDC_EDIT_CODE_LEN_MAX) || (pWnd->GetDlgCtrlID() == IDC_EDIT_CAM_ALIGN_RECT_SIZE))
+		(pWnd->GetDlgCtrlID() == IDC_EDIT_MAX_CODE_LEN) || (pWnd->GetDlgCtrlID() == IDC_EDIT_CAM_ALIGN_RECT_SIZE) ||
+		(pWnd->GetDlgCtrlID() == IDC_EDIT_MIN_CODE_VAL) || (pWnd->GetDlgCtrlID() == IDC_EDIT_MAX_CODE_LEN) ||
+		(pWnd->GetDlgCtrlID() == IDC_EDIT_MAX_CODE_VAL))
 	{
 		return pApp->m_WhiteBrush;
 	}
@@ -190,4 +230,20 @@ void CDlgInspParams::OnCancel()
 	// TODO: Add your specialized code here and/or call the base class
 
 	CDialogEx::OnCancel();
+}
+
+
+void CDlgInspParams::OnBnClickedChkUseCodeRange()
+{
+	UpdateData(TRUE);
+	if (m_bUseCodeRange)
+	{
+		GetDlgItem(IDC_EDIT_MIN_CODE_VAL)->EnableWindow(TRUE);
+		GetDlgItem(IDC_EDIT_MAX_CODE_LEN)->EnableWindow(TRUE);
+	}
+	else
+	{
+		GetDlgItem(IDC_EDIT_MIN_CODE_VAL)->EnableWindow(FALSE);
+		GetDlgItem(IDC_EDIT_MAX_CODE_LEN)->EnableWindow(FALSE);
+	}
 }

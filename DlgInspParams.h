@@ -41,4 +41,8 @@ public:
 	// This the display accuracy introduced to show minimum variation in displayed readings
 	int m_nDsplAccuracy;
 	int m_nCamAlignRectSize;
+	BOOL m_bUseCodeRange;
+	CString m_strBarcodeValMin;
+	CString m_strBarcodeValMax;
+	afx_msg void OnBnClickedChkUseCodeRange();
 };

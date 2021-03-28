@@ -28,6 +28,7 @@ CThreadReadWeight::CThreadReadWeight(std::string strCOMPort, eWeighScaleType Wei
 	//m_eWtUnit = Kg;
 	m_strWtUnitMarker = "";
 	nTimesWtUnitSet = 0;
+	//IOutputLog(L"In ReadWeight Thread");
 }
 
 CThreadReadWeight::~CThreadReadWeight()

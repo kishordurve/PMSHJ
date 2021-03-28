@@ -123,7 +123,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\OpenCV320\opencv\build\include;C:\OpenCV320\opencv\build\include\opencv;C:\OpenCV320\opencv\build\include\opencv2;C:\Program Files\OpenNI2\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\OpenCV320\opencv\build\include;C:\OpenCV320\opencv\build\include\opencv;C:\OpenCV320\opencv\build\include\opencv2;C:\Program Files\OpenNI2\Include;D:\PMSOS\HJ\CL Express\json-develop\include;D:\Duravision\PPSAntar\vcpkg-master\installed\x86-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

@@ -317,10 +317,13 @@
 #define IDC_EDIT_SEAFREIGHT_RATE        1051
 #define IDC_EDIT_URL                    1051
 #define IDC_EDIT_PWD                    1051
+#define IDC_EDIT_MIN_CODE_VAL           1051
 #define IDC_BN_SHOW_RECORDS             1052
 #define IDC_EDIT_data_stamp             1052
 #define IDC_EDIT_LABEL_WIDTH            1052
 #define IDC_EDIT_AIRFREIGHT_RATE        1052
+#define IDC_EDIT_MAX_CODE_LEN           1052
+#define IDC_EDIT_URL2                   1052
 #define IDC_BUTTON3                     1053
 #define IDC_BN_EXPORT_TO_XLS            1053
 #define IDC_EDIT_wk_date                1053
@@ -363,7 +366,7 @@
 #define IDC_EDIT_del_mark               1067
 #define IDC_RADIO_DIM_UNIT              1067
 #define IDC_EDIT_CODE_LEN2              1067
-#define IDC_EDIT_CODE_LEN_MAX           1067
+#define IDC_EDIT_MAX_CODE_VAL           1067
 #define IDC_RADIO5                      1068
 #define IDC_RADIO6                      1069
 #define IDC_RADIO7                      1070
@@ -374,6 +377,7 @@
 #define IDC_CHK_LOGO                    1074
 #define IDC_CHK_SEND_DATA               1074
 #define IDC_CHK_ENABLE_WT               1074
+#define IDC_CHK_USE_CODE_RANGE          1074
 #define IDC_RADIO9                      1075
 #define IDC_CHK_NET_WT                  1076
 #define IDC_CHK_GROSS_WT                1077
@@ -410,6 +414,9 @@
 #define IDC_STATIC_SEAFR_CN             1106
 #define IDC_EDIT_KEY                    1110
 #define IDC_EDIT_OPERATING_MODE         1111
+#define IDC_EDIT_KEY2                   1111
+#define IDC_CHECK2                      1113
+#define IDC_CHK_ENABLE_ADDR2            1113
 
 // Next default values for new objects
 // 
@@ -417,7 +424,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        394
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1113
+#define _APS_NEXT_CONTROL_VALUE         1114
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

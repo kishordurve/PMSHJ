@@ -28,5 +28,10 @@ public:
 	virtual void OnOK();
 	virtual void OnCancel();
 	afx_msg void OnBnClickedChkSendData();
-	BOOL m_bSendData;
+	BOOL m_bSendDataAddr1;
+	// For second web address
+	CString m_strURL2;
+	CString m_strKey2;
+	BOOL m_bSendDataAddr2;
+	afx_msg void OnBnClickedChkEnableAddr2();
 };

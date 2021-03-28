@@ -551,6 +551,42 @@ void CPMSHJView::OnBnClickedBnReport()
 
 void CPMSHJView::OnBnClickedBnScan()
 {
+	// For Trial
+	//static int nRand = 0;
+	//STInspResult stInspResult;
+	//stInspResult.bBarcodeReadSuccess = TRUE;
+	//stInspResult.bDimensionReadSuccess = TRUE;
+	//stInspResult.bResultReady = TRUE;
+	//stInspResult.dFreight = 12.34;
+	//stInspResult.dHeight = 23.45;
+	//stInspResult.dLength = 34.56;
+	//stInspResult.dWidth = 45.67;
+	//stInspResult.dVolume = 56.78;
+	//stInspResult.dWeightGr = 67.89;
+	//stInspResult.strBarcode = "123456789012345";
+	//stInspResult.strTime = m_pApp->GetSysDateTimeMS(TRUE);
+	//if (nRand % 2 == 0)
+	//{
+	//	CString str;
+	//	str.Format(L"%d", nRand * 4);
+	//	stInspResult.strBarcode += str;
+	//	stInspResult.bBarcodeReadSuccess = FALSE;
+	//	stInspResult.dHeight *= nRand++;
+	//	SetCodeReadStatus(CODE_OUT_OF_RANGE);
+	//}
+	//else
+	//{
+	//	CString str;
+	//	str.Format(L"%d", nRand * 5);
+	//	stInspResult.strBarcode += str;
+	//	stInspResult.dHeight += nRand++;
+	//	stInspResult.bBarcodeReadSuccess = TRUE;
+	//	SetCodeReadStatus(CODE_OK);
+	//}
+	//UpdateGrid(stInspResult);
+	//return;
+	//
+
 	if (m_b3DLive)
 	{
 		SetFocusToHorzBar();
@@ -583,7 +619,7 @@ void CPMSHJView::OnBnClickedBnScan()
 		SetButtonsState(TRUE);
 		if (!m_pApp->m_bReadWtThreadUp && m_pApp->m_stOptions.bWtRqd)
 		{
-			//IOutputLog(L"Before call to StartWeighScaleReadThread()");
+			IOutputLog(L"In View Before call to StartWeighScaleReadThread()");
 			m_pApp->StartWeighScaleReadThread();
 			//IOutputLog(L"After call to StartWeighScaleReadThread()");
 
@@ -946,7 +982,11 @@ BOOL CPMSHJView::ImageLiveStart3DOrbbec(int nNoOfFrames, BOOL bFindBoxDims)
 									m_pApp->m_strScannerString.Empty();
 									LeaveCriticalSection(&(m_pApp->m_csScannerString));
 									if ((strCode.IsEmpty()))// Code not yet received!
+									{
+										if (m_pApp->m_stServerCommParams.bSendDataToServer)
+											SetDataLoggingStatus(DATA_NOT_DONE);
 										continue;
+									}
 									if (strCode == m_pApp->m_stInspResultSaved.strBarcode)// Same barcode is read again!
 									{
 										int nLen = abs(m_pApp->m_stInspResultSaved.dLength - m_pApp->m_stInspResult.dLength);
@@ -954,7 +994,11 @@ BOOL CPMSHJView::ImageLiveStart3DOrbbec(int nNoOfFrames, BOOL bFindBoxDims)
 										int nHt = abs(m_pApp->m_stInspResultSaved.dHeight - m_pApp->m_stInspResult.dHeight);
 										// If dims are unchanged wait for next box - continue 3D scanning
 										if ((nLen < 2) && (nWid < 2) && (nHt < 2))
+										{
+											if (m_pApp->m_stServerCommParams.bSendDataToServer)
+												SetDataLoggingStatus(DATA_NOT_DONE);
 											continue;
+										}
 									}
 									if (strCode.GetLength() >= m_pApp->m_stInspParams.nBarcodeLengthMin)
 									{
@@ -972,7 +1016,12 @@ BOOL CPMSHJView::ImageLiveStart3DOrbbec(int nNoOfFrames, BOOL bFindBoxDims)
 										continue;
 									}
 									else // W/F Barcode
+									{
+										// When not sending data to server the picture serves to show status of barcode receipt
+										if (m_pApp->m_stServerCommParams.bSendDataToServer)
+											SetDataLoggingStatus(DATA_NOT_DONE);
 										continue;
+									}
 								}
 							}// if m_pApp->m_stOptions.bUseCodeAsTrigger is TRUE
 							else // Foot switch signal used as trigger
@@ -1026,11 +1075,24 @@ BOOL CPMSHJView::ImageLiveStart3DOrbbec(int nNoOfFrames, BOOL bFindBoxDims)
 									m_pApp->m_stInspResult.dFreight = GetFreight(m_pApp->m_stInspResult, m_pApp->m_stFreightParams, FreightMode);
 									m_pApp->m_stInspResult.FreightMode = FreightMode;
 									
-									m_pApp->m_stInspResult.strWeightunit = m_pApp->m_strWtUnit; 
+									m_pApp->m_stInspResult.strWeightunit = m_pApp->m_strWtUnit;
+									if (m_BarCodeReadStatus == CODE_OK)
+										m_pApp->m_stInspResult.bBarcodeReadSuccess = TRUE;
+									else // Barcode was of correct length but out of range
+									{
+										m_pApp->m_stInspResult.bBarcodeReadSuccess = FALSE;
+										bBarcodeRcd = FALSE;
+										bFootSwitchTrigRcd = FALSE;
+										m_pApp->m_stInspResult.strTime = m_pApp->GetSysDateTimeMS(TRUE);
+										UpdateGrid(m_pApp->m_stInspResult);
+										SetCodeReadStatus(CODE_OUT_OF_RANGE);
+										IOutputLog(L"Code out of range. Continuing.");
+										continue;
+									}
 
-									m_pApp->m_stScanData.AddItem(m_pApp->m_stInspResult);
 									bBarcodeRcd = FALSE;
 									bFootSwitchTrigRcd = FALSE;
+									m_pApp->m_stScanData.AddItem(m_pApp->m_stInspResult);
 									if (m_pApp->SaveScanData())
 									{
 										SetMessage(IDS_STR_DATA_SAVED, CYAN_COLOR);
@@ -1050,6 +1112,12 @@ BOOL CPMSHJView::ImageLiveStart3DOrbbec(int nNoOfFrames, BOOL bFindBoxDims)
 										IOutputLog(L"Setting event to log to server");
 										SetEvent(m_pApp->m_hSendDataToServer);
 										bWFServerResponse = TRUE;
+										m_nImagesGrabbed = nNoOfFrames;
+										break;
+									}
+									else // Data logging not required. Need to set status and break.
+									{
+										//SetDataLoggingStatus(DATA_OK);
 										m_nImagesGrabbed = nNoOfFrames;
 										break;
 									}
@@ -1125,7 +1193,7 @@ BOOL CPMSHJView::ImageLiveStart3DOrbbec(int nNoOfFrames, BOOL bFindBoxDims)
 		str.Format(L"%s", openni::OpenNI::getExtendedError());
 		SetMessage(str);
 	}
-	if ((!m_pFrame->m_bAbortScan) && bWFServerResponse && m_pApp->m_stOptions.bPrintLabel)
+	if (!m_pFrame->m_bAbortScan && m_pApp->m_stServerCommParams.bSendDataToServer && bWFServerResponse)
 	{
 		t1 = m_HighResTimer.GetHighResElapsedTimeMsec();
 		IOutputLog(L"Entering while loop for Server response");
@@ -1144,10 +1212,21 @@ BOOL CPMSHJView::ImageLiveStart3DOrbbec(int nNoOfFrames, BOOL bFindBoxDims)
 				break;
 			}
 			//Sleep(50);
-		}		
-		if (m_DataLoggingStatus == DATA_OK)
+		}
+
+	}
+	if (m_pFrame->m_bAbortScan)
+		IOutputLog(L"Abort scan");
+	if (!m_pApp->m_stOptions.bPrintLabel)
+		IOutputLog(L"Print label not required");
+	if ((!m_pFrame->m_bAbortScan) &&  m_pApp->m_stOptions.bPrintLabel && m_pApp->m_stInspResultSaved.bBarcodeReadSuccess)
+	{
+		IOutputLog(L"Not abort scan and printing required!");
+		if ((m_DataLoggingStatus == DATA_OK) || (!m_pApp->m_stServerCommParams.bSendDataToServer))
 		{
+			IOutputLog(L"Entering print label!");
 			// If it comes here server response has been received within the max time limit
+
 			if (m_pApp->m_stPrintParams.bGetUserOKForPrinting)
 			{
 				if (MessageBox(L"Print Label?", L"Print Label?", MB_YESNO) == IDYES)
@@ -1164,9 +1243,13 @@ BOOL CPMSHJView::ImageLiveStart3DOrbbec(int nNoOfFrames, BOOL bFindBoxDims)
 			else
 			{
 				if (m_pApp->m_bPrintLabelThreadUp)
+				{
+					IOutputLog(L"Using thread to print label!");
 					SetEvent(m_pApp->m_hPrintLabel);
+				}
 				else
 				{
+					IOutputLog(L"W/O thread Printing label!");
 					PrintLabelCLExpress(m_pApp->m_stInspResultSaved);
 					m_nImagesGrabbed = 100001;
 				}
@@ -1174,7 +1257,7 @@ BOOL CPMSHJView::ImageLiveStart3DOrbbec(int nNoOfFrames, BOOL bFindBoxDims)
 			}
 			// Reset data logging status
 			m_DataLoggingStatus = DATA_NOT_DONE;
-		}
+		} // if printing
 		// Clean up and make ready for next box!
 		m_pApp->m_stScanData.RemoveAllItems();
 		// Empty the code string as otherwise it will be mistaken for the next valid code scan trigger
@@ -1182,6 +1265,8 @@ BOOL CPMSHJView::ImageLiveStart3DOrbbec(int nNoOfFrames, BOOL bFindBoxDims)
 		nNumImagesAfterDataSave = 0;
 		m_pApp->m_pFrame->m_strTotal.Empty();
 	}
+	else
+		IOutputLog(L"Abort scan or print label not required");
 	m_bScanDone = TRUE;
 	m_b3DLive = FALSE;
 	if (m_nImagesGrabbed >= nNoOfFrames)
@@ -3438,7 +3523,7 @@ BOOL CPMSHJView::PrintLabelCLExpress(STInspResult InspResult)
 	{
 		strUni.Format(L"体积重");
 		nRetVal = printerfont("276", "520", "TSS24.BF2", "0", "1", "1", CW2A(strUni.GetBuffer()));//408
-		str.Format("   = %3.2fkg", 1.0 * nRoundedOffLength * nRoundedOffWidth * nRoundedOffHeight / 6000);
+		str.Format("   = %3.2fkg", 1.0 * nRoundedOffLength * nRoundedOffWidth * nRoundedOffHeight / 5000);
 		nRetVal = printerfont("328", "520", "3", "0", "1", "1", str.GetBuffer(str.GetLength()));//408
 	}
 	else // Marine - write normal volume
@@ -3714,11 +3799,30 @@ void CPMSHJView::UpdateGrid(STInspResult InspResult)
 	m_pApp->m_arInspResults.Add(InspResult);
 	if (m_pApp->m_arInspResults.GetSize() > (GRID_ROWS - 1))
 		m_pApp->m_arInspResults.RemoveAt(0);
-
+	int nSize = m_pApp->m_arInspResults.GetSize();
 	for (int i = 0; i < m_pApp->m_arInspResults.GetSize(); i++)
 	{
 		CString str;
 		int nRowIndex = (m_pApp->m_arInspResults.GetSize() - i);
+		BOOL bIsBarcodeInRange = m_pApp->m_arInspResults[i].bBarcodeReadSuccess;
+		if (!bIsBarcodeInRange)
+		{
+			m_FlexGrid.SetRow(nRowIndex);
+			for (int j = 0; j < m_FlexGrid.GetCols(); j++)
+			{
+				m_FlexGrid.SetCol(j);
+				m_FlexGrid.SetCellForeColor(RGB(255, 0, 0));
+			}
+		}
+		else
+		{
+			m_FlexGrid.SetRow(nRowIndex);
+			for (int j = 0; j < m_FlexGrid.GetCols(); j++)
+			{
+				m_FlexGrid.SetCol(j);
+				m_FlexGrid.SetCellForeColor(RGB(255, 255, 255));
+			}
+		}
 		// Column 2 - Barcode
 		if (m_pApp->m_arInspResults[i].strBarcode.IsEmpty())
 			str.Format(L"-");
@@ -3783,7 +3887,7 @@ double CPMSHJView::GetFreight(STInspResult InspResult, STFreightParams stFreight
 	if (stFreightParams.FreightMode == FREIGHT_AIR)
 	{
 		// If air freight the formula is: Freight  = cm * cm * cm * Rate / 6000 
-		double dVolWeight = dRoundedVolumeCM / 6000;
+		double dVolWeight = dRoundedVolumeCM / 5000;
 		str.Format(L"%3.2f", dVolWeight);
 		dVolWeight = _wtof(str);
 		if (dVolWeight > InspResult.dWeightNet)
@@ -3913,6 +4017,8 @@ CString CPMSHJView::GetStringToSendToServer(CString strData, CString strSeed)
 // Sets a bitmap in the circle just above the grid on right hand side
 void CPMSHJView::SetDataLoggingStatus(eDataLoggingStatus DataLoggingStatus)
 {
+	if (m_DataLoggingStatus == DataLoggingStatus)
+		return;
 	m_DataLoggingStatus = DataLoggingStatus;
 	if (DataLoggingStatus == DATA_OK)
 	{
@@ -3923,4 +4029,24 @@ void CPMSHJView::SetDataLoggingStatus(eDataLoggingStatus DataLoggingStatus)
 		m_PicDataLoggingStatus.SetBitmap(m_hBitmapDataNotDone);
 	else
 		m_PicDataLoggingStatus.SetBitmap(m_hBitmapDataFail);
+}
+
+// Sets a bitmap in the circle just above the grid on right hand side
+void CPMSHJView::SetCodeReadStatus(eBarCodeReadStatus CodeReadStatus)
+{
+	if (m_BarCodeReadStatus == CodeReadStatus)
+		return;
+	m_BarCodeReadStatus = CodeReadStatus;
+	CString strMsg;
+	strMsg.Format(L"COde Read Status in View: %d", CodeReadStatus);
+	IOutputLogString(strMsg);
+	if (m_BarCodeReadStatus == CODE_OK)
+	{
+		m_PicDataLoggingStatus.SetBitmap(m_hBitmapDataOK);
+		//IOutputLog(L"View Code Read status - OK");
+	}
+	else if (m_BarCodeReadStatus == CODE_OUT_OF_RANGE)
+		m_PicDataLoggingStatus.SetBitmap(m_hBitmapDataFail);
+	else
+		m_PicDataLoggingStatus.SetBitmap(m_hBitmapDataNotDone);
 }

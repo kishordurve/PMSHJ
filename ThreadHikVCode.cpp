@@ -136,9 +136,10 @@ m_bProcess(FALSE)
 	m_nBarcodeLengthMax = pApp->m_stInspParams.nBarcodeLengthMax;
 	m_CodeTypeRqd = pApp->m_stPrintParams.CodeType;
 
+	m_bNeedToCheckCodeRange = FALSE;
 }
 
-CThreadHikVCode::CThreadHikVCode(int nBarcodeLengthMin, int nBarcodeLengthMax, char cEndChar)
+CThreadHikVCode::CThreadHikVCode(int nBarcodeLengthMin, int nBarcodeLengthMax, char cEndChar, CString strBarcodeValMin, CString strBarcodeValMax)
 {
 	m_nBarcodeLengthMin = nBarcodeLengthMin;
 	m_nBarcodeLengthMax = nBarcodeLengthMax;
@@ -146,6 +147,35 @@ CThreadHikVCode::CThreadHikVCode(int nBarcodeLengthMin, int nBarcodeLengthMax, c
 	CPMSHJApp* pApp = (CPMSHJApp*)AfxGetApp();
 	m_hEndScannerThread = pApp->m_hEndScannerThread;
 	m_bIsNewCode = TRUE;
+
+	m_strBarcodeValMin = strBarcodeValMin;
+	m_strBarcodeValMax = strBarcodeValMax;
+	IOutputLog(L"Code String Lower, Upper: ");
+	IOutputLogString(m_strBarcodeValMin);
+	IOutputLogString(m_strBarcodeValMax);
+
+	CString str = m_strBarcodeValMax;
+	for (int i = 0; i < str.GetLength(); i++)
+		if (!isdigit(str[i]))
+			str.Remove(str[i--]);
+	m_dUpper = _wtof(str.GetString());
+	str.Format(L"m_dUpper: %16.0f", m_dUpper);
+	IOutputLogString(str);
+	str = m_strBarcodeValMin;
+	for (int i = 0; i < str.GetLength(); i++)
+		if (!isdigit(str[i]))
+			str.Remove(str[i--]);
+	m_dLower = _wtof(str.GetString());
+	str.Format(L"Code Value Lower / Upper: %16f, %16f", m_dLower, m_dUpper);
+	IOutputLogString(str);
+	// Need to check only if upper limit > 0
+	if (m_dUpper > EPSILON)
+	{
+		IOutputLog(L"Code Range Check Effective");
+		m_bNeedToCheckCodeRange = TRUE;
+	}
+	else
+		m_bNeedToCheckCodeRange = FALSE;
 }
 
 CThreadHikVCode::~CThreadHikVCode()
@@ -211,7 +241,22 @@ BOOL CThreadHikVCode::InitInstance()
 					pApp->m_stBarcodeParts.pt3 = m_pt3;
 					pApp->m_stBarcodeParts.pt4 = m_pt4;
 					pApp->m_strScannerString = m_strCode;
+					if (m_bNeedToCheckCodeRange)
+					{
+						//IOutputLog(L"Thread InitInstance: Need to check code status");
+						if (m_bCodeInRange)
+						{
+							IOutputLog(L"Thread InitInstance: Need to check code status, status OK.");
+							pApp->m_pFrame->m_pImageView->m_BarCodeReadStatus = CODE_OK;
+						}
+						else
+							pApp->m_pFrame->m_pImageView->m_BarCodeReadStatus = CODE_OUT_OF_RANGE;
+					}
+					else
+						pApp->m_pFrame->m_pImageView->m_BarCodeReadStatus = CODE_OK;
 					LeaveCriticalSection(&(pApp->m_csScannerString));
+					//IOutputLog(L"Code Rcd:");
+					//IOutputLogString(m_strCode);
 					//AfxGetApp()->m_pMainWnd->PostMessage(WM_UPDATE_CODE, (WPARAM)((CW2A(m_strCode)), (LPARAM)(0)));
 				}
 				else if (!m_strCode.IsEmpty()) // To make sure that the code corner points are updated if box has moved
@@ -227,6 +272,15 @@ BOOL CThreadHikVCode::InitInstance()
 						pApp->m_stBarcodeParts.pt3 = m_pt3;
 						pApp->m_stBarcodeParts.pt4 = m_pt4;
 						LeaveCriticalSection(&(pApp->m_csScannerString));
+					}
+				}
+				MSG msg;
+				while (::PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE))
+				{
+					if (!pApp->PumpMessage()) //if WM_QUIT i.e User exited the application
+					{
+						::PostQuitMessage(0);
+						m_bProcess = FALSE;// FT_APPLN_QUIT;
 					}
 				}
 			}
@@ -252,7 +306,7 @@ BOOL CThreadHikVCode::InitInstance()
 	{
 		pApp->m_bScannerThreadUp = FALSE;
 	}
-
+	pApp->m_pThreadHikVCode = NULL;
 	AfxEndThread(0);
 
 	return TRUE;
@@ -285,23 +339,59 @@ void CThreadHikVCode::ImageCallBack(MVID_CAM_OUTPUT_INFO* pstOutput)
 				if (m_CodeTypeRqd == MVID_CODE_TDCR_QR)// Only for QRcode our enum matches with HikVision #define
 				{
 					if (pstOutput->stCodeList.stCodeInfo[i].enBarType != m_CodeTypeRqd)
+					{
+						m_bCodeInRange = FALSE;
 						continue;
+					}
 				}
 				else // Expected is barcode
 				{
 					if (pstOutput->stCodeList.stCodeInfo[i].enBarType == MVID_CODE_TDCR_QR)// Wrong code
+					{
+						m_bCodeInRange = FALSE;
 						continue;
+					}
 				}
 				wchar_t strWchar[MVID_MAX_CODECHARATERLEN] = { 0 };
 				std::string str((char*)pstOutput->stCodeList.stCodeInfo[i].strCode);
 				if ((str.length() < m_nBarcodeLengthMin) || (str.length() > m_nBarcodeLengthMax))
 				{
-					//IOutputLog(L"Barcode type correct but length different.");
+					IOutputLog(L"Barcode type correct but length different.");
+					m_bCodeInRange = FALSE;
 					continue;
 				}
-				CString strLength;
-				strLength.Format(L"Num chars in code: %d", str.length());
-				//IOutputLogString(strLength);
+				// Check for code validity - code value must lie between min and max as specified in insp params
+				if (m_bNeedToCheckCodeRange)
+				{
+					//IOutputLog(L"Entering Code Range Check");
+
+					CString strRcd(str.c_str());
+					for (int i = 0; i < strRcd.GetLength(); i++)
+						if (!isdigit(strRcd[i]))
+							strRcd.Remove(strRcd[i--]);
+					double dRcd = _wtof(strRcd.GetString());
+					//strRcd.Format(L"Code Rcd: %s, dRcd: %16.0f, dUpper: %16.0f, dLower: %16.0f", str.c_str(), dRcd, m_dUpper, m_dLower);
+					//IOutputLogString(strRcd);
+					if ((dRcd > (m_dUpper + EPSILON)) || (dRcd < (m_dLower - EPSILON)))
+					{
+						if (m_bCodeInRange)// Ensures message is sent only once per code
+						{
+							AfxGetApp()->m_pMainWnd->PostMessage(WM_CODE_READ_STATUS, (WPARAM)(CODE_OUT_OF_RANGE), (LPARAM)(0));
+							m_bCodeInRange = FALSE;
+						}
+						//continue;
+					}
+					else
+					{
+						if (!m_bCodeInRange)// Ensures message is sent only once per code
+						{
+							AfxGetApp()->m_pMainWnd->PostMessage(WM_CODE_READ_STATUS, (WPARAM)(CODE_OK), (LPARAM)(0));
+							m_bCodeInRange = TRUE;
+						}
+					}
+				}
+				//else
+				//	IOutputLog(L"Doesn't need code range check");
 				Char2Wchar((char*)pstOutput->stCodeList.stCodeInfo[i].strCode, strWchar, MVID_MAX_CODECHARATERLEN);
 				m_pt1.x = pstOutput->stCodeList.stCodeInfo[i].stCornerPt[0].nX;
 				m_pt1.y = pstOutput->stCodeList.stCodeInfo[i].stCornerPt[0].nY;
@@ -314,7 +404,7 @@ void CThreadHikVCode::ImageCallBack(MVID_CAM_OUTPUT_INFO* pstOutput)
 				m_strCode.Format(_T("%s"), strWchar);
 			}
 			CString strMsg("Code Received: ");
-			strMsg += m_strCode;
+			//strMsg += m_strCode;
 			//IOutputLogString(strMsg);
 			Sleep(100);
 		}

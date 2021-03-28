@@ -18,8 +18,8 @@ CThreadSendDataToServer::CThreadSendDataToServer()
 	m_pApp = (CPMSHJApp*)AfxGetApp();
 	m_hEndSendDataThread = m_pApp->m_hEndSendDataThread;
 	m_hSendDataToServer = m_pApp->m_hSendDataToServer;
-	m_strKey = m_pApp->m_stServerCommParams.strKey;// "vbD#&!f&P&24$9x8XC*Q%Z^VJPiKNNg@";
-	m_strURL = m_pApp->m_stServerCommParams.strURL;// "http://47.114.126.132:9983/system/packing/data";
+	m_strKey = m_pApp->m_stServerCommParams.strKey1;// "vbD#&!f&P&24$9x8XC*Q%Z^VJPiKNNg@";
+	m_strURL = m_pApp->m_stServerCommParams.strURL1;// "http://47.114.126.132:9983/system/packing/data";
 }
 
 CThreadSendDataToServer::CThreadSendDataToServer(HANDLE hEndSendDataThread, HANDLE hSendData)
@@ -27,8 +27,8 @@ CThreadSendDataToServer::CThreadSendDataToServer(HANDLE hEndSendDataThread, HAND
 	m_pApp = (CPMSHJApp*)AfxGetApp();
 	m_hEndSendDataThread = m_pApp->m_hEndSendDataThread;
 	m_hSendDataToServer = m_pApp->m_hSendDataToServer;
-	m_strKey = m_pApp->m_stServerCommParams.strKey;// "vbD#&!f&P&24$9x8XC*Q%Z^VJPiKNNg@";
-	m_strURL = m_pApp->m_stServerCommParams.strURL;// "http://47.114.126.132:9983/system/packing/data";
+	m_strKey = m_pApp->m_stServerCommParams.strKey1;// "vbD#&!f&P&24$9x8XC*Q%Z^VJPiKNNg@";
+	m_strURL = m_pApp->m_stServerCommParams.strURL1;// "http://47.114.126.132:9983/system/packing/data";
 }
 
 CThreadSendDataToServer::~CThreadSendDataToServer()
@@ -78,8 +78,8 @@ BOOL CThreadSendDataToServer::InitInstance()
 
 			if (m_stInspResult.FreightMode == FREIGHT_AIR)
 			{
-				//m_strVolume.Format(L"%3.2f", 1.0 * nRoundedOffLength * nRoundedOffWidth * nRoundedOffHeight / 6000.0);
-				m_strVolumeWeight.Format(L"%3.2f", 1.0 * nRoundedOffLength * nRoundedOffWidth * nRoundedOffHeight / 6000.0);
+				//m_strVolume.Format(L"%3.2f", 1.0 * nRoundedOffLength * nRoundedOffWidth * nRoundedOffHeight / 5000.0);
+				m_strVolumeWeight.Format(L"%3.2f", 1.0 * nRoundedOffLength * nRoundedOffWidth * nRoundedOffHeight / 5000.0);
 			}
 			else
 			{
@@ -204,9 +204,9 @@ END_MESSAGE_MAP()
 #define NT_SUCCESS(Status)          (((NTSTATUS)(Status)) >= 0)
 #define STATUS_UNSUCCESSFUL         ((NTSTATUS)0xC0000001L)
 //#pragma comment(lib, "bcrypt.lib")
-// This function creates and returns HASH for strData with strKey using MD5 algorithm
+// This function creates and returns HASH for strData with strKey1 using MD5 algorithm
 // 
-CString CThreadSendDataToServer::CreateHash(CString strData, CString strKey)
+CString CThreadSendDataToServer::CreateHash(CString strData, CString strKey1)
 {
 	BOOL bResult = TRUE;
 	CString strToSend;
@@ -220,7 +220,7 @@ CString CThreadSendDataToServer::CreateHash(CString strData, CString strKey)
 		cbHashObject = 0;
 	PBYTE               pbHashObject = NULL;
 	PBYTE               pbHash = NULL;
-	std::string			strstdKey = CW2A(strKey);
+	std::string			strstdKey = CW2A(strKey1);
 	BYTE* key = new BYTE[strstdKey.length()];//BYTE key[32];// = { "vbD#&!f&P&24$9x8XC*Q%Z^VJPiKNNg@" };
 	std::string			strstdData = CW2A(strData);
 	int nSize = strstdData.length();
@@ -381,13 +381,13 @@ std::string CThreadSendDataToServer::hextostr(std::vector<unsigned char> const &
 
 // RetVal 0 - Success, otherwise Fail
 // 
-eDataLoggingStatus CThreadSendDataToServer::SendDataToServer(CString strURL, json JsonData)
+eDataLoggingStatus CThreadSendDataToServer::SendDataToServer(CString strURL1, json JsonData)
 {
 	m_strError.Empty();
 	std::string ResponseText;
-	IOutputLogString(strURL);
+	IOutputLogString(strURL1);
 	CString strMsg;
-	cpr::Response ServerResponse = cpr::Put(cpr::Url{ (CW2A)strURL },
+	cpr::Response ServerResponse = cpr::Put(cpr::Url{ (CW2A)strURL1 },
 		cpr::Header{ { "Content-Type", "application/json" } },
 		cpr::Body{ JsonData.dump() }
 	);

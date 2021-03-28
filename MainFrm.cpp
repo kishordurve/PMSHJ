@@ -32,6 +32,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_MESSAGE(WM_FOOT_SW_READ_FAIL, OnRcdFootSwitchReadFail)
 	ON_MESSAGE(WM_DATA_LOG_STATUS, OnRcdDataLogStatus)
 	ON_MESSAGE(WM_WEIGHT_ERROR, OnRcdWeighScaleError)
+	ON_MESSAGE(WM_CODE_READ_STATUS, OnRcdCodeReadStatus)
 	ON_WM_CLOSE()
 	ON_WM_SHOWWINDOW()
 END_MESSAGE_MAP()
@@ -931,6 +932,23 @@ LRESULT CMainFrame::OnRcdDataLogStatus(WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
+// Comes here when code reading is done
+//
+LRESULT CMainFrame::OnRcdCodeReadStatus(WPARAM wParam, LPARAM lParam)
+{
+	CPMSHJApp* pApp = (CPMSHJApp*)AfxGetApp();
+	eBarCodeReadStatus CodeReadStatus = (eBarCodeReadStatus)wParam;
+	m_pImageView->SetCodeReadStatus(CodeReadStatus);
+	if (CodeReadStatus == CODE_OK)
+		IOutputLog(L"Code Read status - OK");
+	else if (CodeReadStatus == CODE_OUT_OF_RANGE)
+		IOutputLog(L"Code out of range");
+	else if (CodeReadStatus == CODE_WRONG_LENGTH)
+		IOutputLog(L"Code Wrong Length");
+
+	return 0;
+}
+
 // Comes here when data logging is done
 //
 LRESULT CMainFrame::OnRcdWeighScaleError(WPARAM wParam, LPARAM lParam)
@@ -939,10 +957,14 @@ LRESULT CMainFrame::OnRcdWeighScaleError(WPARAM wParam, LPARAM lParam)
 	//m_bAbortScan = TRUE;
 	//m_bWeighScaleError = TRUE;	
 	m_pImageView->OnBnClickedBnStop();
+	pApp->StopWeighScaleReadThread();
+	//IOutputLog(L"MainFrame: Weigh Scale Error.");
 	if (::MessageBox(NULL, L"Weigh Scale Error. Do you want to disable weight reading?", L"Weigh scale error", MB_YESNO) == IDYES)
 	{
+		if (pApp->m_stOptions.bWtRqd)
+			IOutputLog(L"Weigh Scale Error.");
 		pApp->m_stOptions.bWtRqd = FALSE;
-		//pApp->WriteOptionsToRegistry();
+		pApp->WriteOptionsToRegistry();
 	}
 	return 0;
 }

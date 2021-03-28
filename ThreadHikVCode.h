@@ -9,7 +9,7 @@ class CThreadHikVCode : public CWinThread
 
 public:
 	CThreadHikVCode();           // protected constructor used by dynamic creation
-	CThreadHikVCode(int nBarcodeLengthMin, int nBarcodeLengthMax, char cEndChar);
+	CThreadHikVCode(int nBarcodeLengthMin, int nBarcodeLengthMax, char cEndChar, CString strBarcodeValMin, CString strBarcodeValMax);
 	virtual ~CThreadHikVCode();
 
 public:
@@ -35,6 +35,12 @@ public:
 	CPoint m_pt3;
 	CPoint m_pt4;
 
+	CString m_strBarcodeValMin;
+	CString m_strBarcodeValMax;
+	double m_dLower;
+	double m_dUpper;
+	BOOL m_bNeedToCheckCodeRange;
+	BOOL m_bCodeInRange;
 	void ImageCallBack(MVID_CAM_OUTPUT_INFO* pFrameInfo);
 
 protected:
